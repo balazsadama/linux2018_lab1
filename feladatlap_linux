@@ -1,0 +1,600 @@
+1. laborfeladat - 2018
+név
+azonosító 
+
+Alapkatalógusunkban hozzunk létre az mkdir parancs segítségével egy labor1 
+katalógust, majd a cd parancs segítségével lépjünk ebbe a katalógusba. 
+A továbbiakban ebben a katalógusban dolgozzunk, hacsak a feladat szövege 
+nem kér egyebet.
+
+ls 
+- ellenőrizzük, hogy az aktuális katalógus üres 
+- listázzuk ki a /etc/ katalógus tartalmát
+- listázzuk ki a gyökér katalógus tartalmát részletes információkkal (hosszú 
+  formátum)
+  
+Megjegyzés: most folytassuk a feladatok megoldását a többi paranccsal, majd az mkdir
+      parancs után térjünk vissza az ls parancs további feladataihoz.
+
+- listázzuk ki a temp1 katalógus tartalmát rekurzívan, és a rejtett állományok 
+  is jelenjenek meg
+- listázzuk ki az aktuális katalógus tartalmát fordított abc sorrendben úgy, 
+  hogy az állományok mérete felhasználóbarát módon jelenjen meg (vagyis blokkok 
+  helyett byte, Kbyte vagy Mbyte-ban számolva)
+- listázzuk ki az /usr/ katalógus tartalmát hosszú formátumban, méret szerint 
+  csökkenő sorrendben
+- listázzuk ki az alapkatalógus tartalmát rekurzívan, az utolsó módosítás 
+  dátuma szerinti sorrendben
+
+cd
+- lépjünk be a gyökér katalógusban levő var/log katalógusba
+- lépjünk innen vissza az alapkatalógusunkba
+- lépjünk az aktuális katalógus szülőkatalógusába
+
+pwd
+- irassuk ki az aktuális katalógus nevét
+
+tree
+- írassuk ki az alaplatalógusunk szerkezetét, az állományokat is megjelenítve
+- írassuk ki az alaplatalógusunk szerkezetét, csak a katalógusokat megjelenítve
+
+mkdir
+- lépjünk be az alapkatalógusunkban levő labor1 katalógusba
+[baam0146@localhost ~]$ cd ~/labor1/
+[baam0146@localhost labor1]$ 
+
+- hozzunk létre az aktuális katalógusban egy "dir1" nevű katalógust
+[baam0146@localhost labor1]$ mkdir dir1
+[baam0146@localhost labor1]$ 
+
+- az aktuális katalógusban maradva hozzunk létre a /tmp katalógusban egy 
+  katalógust a saját felhasználónevünkkel
+[baam0146@localhost labor1]$ mkdir /tmp/baam0146
+[baam0146@localhost labor1]$ 
+
+- hozzuk létre az aktuális katalógusban egy "pldir1" nevű katalógust, abban 
+  legyen egy "pldir2", ez utóbbiban pedig egy "pldir3" katalógus (egyetlen 
+  utasítás segítségével)
+[baam0146@localhost labor1]$ mkdir -p pldir1/pldir2/pldir3
+[baam0146@localhost labor1]$ 
+
+- hozzuk létre egyetlen utasítással az aktuális katalógusból kiindulva az 
+  alábbi katalógusszerkezetet:
+            temp1  temp2
+            / \     |
+          d11 d12  d21
+           |        |
+         d111     d211    
+[baam0146@localhost labor1]$ mkdir -p temp1/d11/d111 temp1/d12 temp2/d21/d211
+[baam0146@localhost labor1]$ 
+
+rmdir
+- (a fent megadott katalógusszerkezet temp1 katalógusának szülőkatalógusában 
+  vagyunk). Töröljük a   d111 alkatalógust
+[baam0146@localhost labor1]$ rmdir temp1/d11/d111
+[baam0146@localhost labor1]$ 
+	
+- töröljük egyetlen utasítással a temp2 katalógust és alkatalógusait  
+[baam0146@localhost labor1]$ rmdir -p temp2/d21/d211
+[baam0146@localhost labor1]$ 
+
+
+cat
+- hozzunk létre egy "proba" nevű állományt a cat parancs segítségével
+[baam0146@localhost labor1]$ cat > proba
+szoveg
+[baam0146@localhost labor1]$ 
+
+- listázzuk ki a "proba" nevű állomány tartalmát
+[baam0146@localhost labor1]$ cat proba 
+szoveg
+[baam0146@localhost labor1]$ 
+
+- hozzuk létre a "pr1" és "pr2" állományokat (két cat parancs)
+[baam0146@localhost labor1]$ cat > pr1
+egy
+[baam0146@localhost labor1]$ cat > pr2
+ketto
+[baam0146@localhost labor1]$ 
+
+- fűzzük össze a "pr1" és "pr2" állomány tartalmát
+[baam0146@localhost labor1]$ cat pr1 pr2
+egy
+ketto
+[baam0146@localhost labor1]$ 
+
+- listázzuk ki (fűzzük össze) az aktuális katalógusban levő összes állomány 
+  tartalmát (feltételezzük, hogy az aktuális katalógus csak közönséges 
+  állományokat tartalmaz)
+[baam0146@localhost labor1]$ cat *
+cat: dir1: Is a directory
+cat: pldir1: Is a directory
+egy
+ketto
+szoveg
+cat: temp1: Is a directory
+[baam0146@localhost labor1]$ 
+
+- listázzuk ki a "proba" nevű állomány tartalmát úgy, hogy a sorai sorszámozva 
+  legyenek
+[baam0146@localhost labor1]$ cat -n proba 
+     1	szoveg
+[baam0146@localhost labor1]$ 
+
+- az aktuális katalógusban maradva hozzunk létre a cat parancs segítségével 
+  egy-egy állományt a fent megadott katalógusszerkezet temp1, d11 illetve 
+  d211 katalógusában (az állományok neve legyen rendre f1, f11 illetve f211)
+?????????????????????????????????????????????????????????????????????
+
+more (vagy less)
+- listázzuk ki az "/etc/passwd" nevű állomány tartalmát oldalanként
+[baam0146@localhost labor1]$ cat /etc/passwd | more
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+systemd-coredump:x:999:998:systemd Core Dumper:/:/sbin/nologin
+systemd-timesync:x:998:997:systemd Time Synchronization:/:/sbin/nolog
+in
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:997:996:User for polkitd:/:/sbin/nologin
+qemu:x:107:107:qemu user:/:/sbin/nologin
+rtkit:x:172:172:RealtimeKit:/proc:/sbin/nologin
+pulse:x:171:171:PulseAudio System Daemon:/var/run/pulse:/sbin/nologin
+gluster:x:996:991:GlusterFS daemons:/run/gluster:/sbin/nologin
+avahi:x:70:70:Avahi mDNS/DNS-SD Stack:/var/run/avahi-daemon:/sbin/nol
+ogin
+chrony:x:995:990::/var/lib/chrony:/sbin/nologin
+usbmuxd:x:113:113:usbmuxd user:/:/sbin/nologin
+openvpn:x:994:989:OpenVPN:/etc/openvpn:/sbin/nologin
+radvd:x:75:75:radvd user:/:/sbin/nologin
+pipewire:x:993:987:PipeWire System Daemon:/var/run/pipewire:/sbin/nol
+ogin
+geoclue:x:992:986:User for geoclue:/var/lib/geoclue:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+colord:x:991:984:User for colord:/var/lib/colord:/sbin/nologin
+saslauth:x:990:76:Saslauthd user:/run/saslauthd:/sbin/nologin
+nm-openvpn:x:989:983:Default user for running openvpn spawned by Netw
+orkManager:/:/sbin/nologin
+nm-openconnect:x:988:982:NetworkManager user for OpenConnect:/:/sbin/
+nologin
+gdm:x:42:42::/var/lib/gdm:/sbin/nologin
+abrt:x:173:173::/etc/abrt:/sbin/nologin
+setroubleshoot:x:987:980::/var/lib/setroubleshoot:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+gnome-initial-setup:x:986:979::/run/gnome-initial-setup/:/sbin/nologi
+n
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd 
+daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+adam:x:1000:1000:Adam Balazs:/home/adam:/bin/bash
+vboxadd:x:985:1::/var/run/vboxadd:/bin/false
+baam0146:x:1001:1002:Adam:/home/baam0146:/bin/bash
+[baam0146@localhost labor1]$ 
+
+- listázzuk ki az "/etc/group" nevű állomány tartalmát oldalanként
+[baam0146@localhost labor1]$ cat /etc/group | more
+root:x:0:
+bin:x:1:
+daemon:x:2:
+sys:x:3:
+adm:x:4:
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mem:x:8:
+kmem:x:9:
+wheel:x:10:baam0146,adam
+cdrom:x:11:
+mail:x:12:
+man:x:15:
+dialout:x:18:
+floppy:x:19:
+games:x:20:
+tape:x:33:
+video:x:39:
+ftp:x:50:
+lock:x:54:
+audio:x:63:
+nobody:x:99:
+users:x:100:
+utmp:x:22:
+utempter:x:35:
+apache:x:48:
+input:x:999:
+kvm:x:36:qemu
+systemd-journal:x:190:
+systemd-coredump:x:998:
+systemd-timesync:x:997:
+systemd-network:x:192:
+systemd-resolve:x:193:
+dbus:x:81:
+polkitd:x:996:
+qemu:x:107:
+printadmin:x:995:
+rtkit:x:172:
+pulse-access:x:994:
+pulse-rt:x:993:
+pulse:x:171:
+cgred:x:992:
+gluster:x:991:
+avahi:x:70:
+chrony:x:990:
+usbmuxd:x:113:
+openvpn:x:989:
+radvd:x:75:
+brlapi:x:988:
+pipewire:x:987:
+geoclue:x:986:
+ssh_keys:x:985:
+rpc:x:32:
+colord:x:984:
+saslauth:x:76:
+nm-openvpn:x:983:
+nm-openconnect:x:982:
+dip:x:40:
+libvirt:x:981:
+gdm:x:42:
+abrt:x:173:
+setroubleshoot:x:980:
+rpcuser:x:29:
+gnome-initial-setup:x:979:
+sshd:x:74:
+slocate:x:21:
+tss:x:59:
+tcpdump:x:72:
+adam:x:1000:adam
+vboxadd:x:1001:
+vboxsf:x:978:
+baam0146:x:1002:baam0146
+[baam0146@localhost labor1]$ 
+
+cp
+- másoljuk át az aktuális katalógus "proba" nevű állományát a temp1 katalógus 
+  d11 alkatalógusába 
+[baam0146@localhost labor1]$ cp proba temp1/d11
+[baam0146@localhost labor1]$ 
+
+- másoljuk át a temp1 katalógus tartalmát rekurzívan az aktuáls katalógus 
+  temp1_copy katalógusába
+[baam0146@localhost labor1]$ cp -r temp1 ./temp1_copy
+[baam0146@localhost labor1]$ 
+
+- ismételjük meg az előbbi átmásolást úgy, hogy a program kérdezze meg a 
+  felhasználót minden egyes alkalommal, amikor egy már létező állományt akar 
+  felülírni
+[baam0146@localhost labor1]$ cp -riT temp1/ ./temp1_copy
+cp: overwrite './temp1_copy/d11/proba'? y
+[baam0146@localhost labor1]$ 
+
+- másoljunk át néhány C programot az aktuális katalógusba
+???????????????????????????????????????????????????????????????????????????????????
+
+
+mv
+- hozzuk újra létre a korábban letörölt temp2 katalógust és alkatalógusait
+???????????????????????????????????????????????????????????????????????????
+- nevezzük át az aktuális katalógusban levő "proba" állományt "pr"-re.
+[baam0146@localhost labor1]$ mv proba pr
+[baam0146@localhost labor1]$ 
+
+- helyezzük át a temp1 katalógus "f1" állományát az aktuális katalógusba
+[baam0146@localhost labor1]$ mv temp1/f1 .
+[baam0146@localhost labor1]$ 
+
+- helyezzük át az aktuális katalógusban levő "f1" állományt a temp2/d2 
+  katalógusba "f1_backup" néven
+???????????????????????????????????????????????????????????????????????????
+
+rm
+- töröljük az aktuális katalógusban levő "pr1" állományt
+[baam0146@localhost labor1]$ rm pr1 
+[baam0146@localhost labor1]$ 
+
+- töröljük az  aktuális katalógus temp1 katalógusában levő "f1" állományt
+[baam0146@localhost labor1]$ rm temp1/f1 
+[baam0146@localhost labor1]$ 
+
+- töröljük az aktuális katalógusban levő "temp2" katalógus összes állományát
+[baam0146@localhost labor1]$ rm -r temp2
+[baam0146@localhost labor1]$ 
+
+- töröljük az aktuális katalógusban levő "temp1" katalógus tartalmát 
+  rekurzívan, úgy, hogy a program minden egyes művelet előtt kérje a 
+  felhasználó jóváhagyását
+[baam0146@localhost labor1]$ rm -ri temp1
+rm: descend into directory 'temp1'? y
+rm: descend into directory 'temp1/d11'? y
+rm: remove directory 'temp1/d11/d111'? y
+rm: remove regular file 'temp1/d11/proba'? y
+rm: remove directory 'temp1/d11'? y
+rm: remove directory 'temp1/d12'? y
+rm: remove directory 'temp1'? y
+[baam0146@localhost labor1]$ 
+
+  
+rename
+- hozzunk létre néhány .pp-vel végződő nevű állományt
+????????????????????????????????????????????????????????????????????????
+- nevezzünk át az aktuális katalógusbanban minden .pp végződésű állományt .C 
+  végződésűre  
+[baam0146@localhost labor1]$ rename .pp .c *.pp
+[baam0146@localhost labor1]$ 
+
+
+w
+- listázzuk ki, hogy kik vannak bejelentkezve a rendszerbe és ki mit csinál
+- listázzuk ki a bejelentkezett felhasználókat úgy, hogy a fejléc ne 
+  jelenjen meg
+- az előbbi kimenet alapján állapítsuk meg, hogy ki "lazsál" a legtöbb ideje
+
+who
+- listázzuk ki, hogy kik vannak bejelentkezve
+- listázzuk ki a rendszerben dolgozó felhasználók azonosítóját és hogy hányan 
+  vannak bejelentkezve
+
+finger
+- írjunk ki információt a jelenleg bejelentkezett felhasználókról
+- írjuk ki a saját felhasználóra vonatkozó információkat
+- írjuk ki a root felhasználóra vonatkozó információkat rövid formátumban
+- állapítsuk meg a finger parancs kimenetéből, hogy egy tetszőleges felhasználónak 
+  van-e olvasatlan levele vagy sem.
+
+last
+- listázzuk a legutóbbi belépéseket (a wtmp logfájl adatai alapján)
+- listázzuk a saját felhasználó legutóbbi belépéseit 
+- listázzuk a root felhasználó legutóbbi 3 belépését
+
+date
+- listázzuk ki a mai dátumot, órát, napot, stb. alapértelmezett formátumban
+[baam0146@localhost labor1]$ date
+Fri Mar  2 04:49:15 EET 2018
+[baam0146@localhost labor1]$ 
+
+- írassuk ki csak a dátumot mm/dd/yy alakban
+[baam0146@localhost labor1]$ date +"%D"
+03/02/18
+[baam0146@localhost labor1]$ 
+
+- írassuk ki, hogy a hónap hányadik napja van ma
+[baam0146@localhost labor1]$ date +"%d"
+02
+[baam0146@localhost labor1]$ 
+
+- írassuk ki a hónapot és a napot
+[baam0146@localhost labor1]$ date +"%m %d"
+03 02
+
+- írassuk ki az órát, percet (hh:mm) és az időzónát tab-al elválasztva
+[baam0146@localhost labor1]$ date +"%R%t%Z"
+05:03	EET
+[baam0146@localhost labor1]$ 
+
+
+A következőkben mindig hozzuk létre a szükséges állományokat a feladatnak megfelelő szerkezettel és tartalommal.
+
+sort 
+- rendezzük a "nevsor" állomány sorait abc sorrendbe
+[baam0146@localhost labor1]$ sort nevsor 
+Balazs Adam
+Balazs Zoltan
+Balla Gabriella
+Bedo Norbert
+Benko Daniel
+Bocskay Boglarka
+Boldizsar Norbert
+Csaszar Sandor
+Gencsi Mihaly
+Hajdo Nora
+Juhasz Anton
+Koncse Balazs
+Kovacs Gyula
+Laszlo Hunor
+Marton Ildiko-Beata
+Schuller Mark
+Szabo Tamas
+Szepesi Anita
+Szoke Beatrice
+Szopos-Papp Felix
+Tunyogi Gyorgy
+Viezer Balazs
+[baam0146@localhost labor1]$ 
+
+- rendezzük a "nevsor" állomány sorait fordított abc sorrendbe. Az eredmény az  
+  "eredmeny" állományba kerüljön
+[baam0146@localhost labor1]$ sort -ro eredmeny nevsor
+[baam0146@localhost labor1]$ 
+
+- rendezzük a "proba" állomány sorait abc sorrendben úgy, hogy az ismétlődő sorok 
+  csak egyszer szerepeljenek
+[baam0146@localhost labor1]$ sort -u nevsor 
+Balazs Adam
+Balazs Zoltan
+Balla Gabriella
+Bedo Norbert
+Benko Daniel
+Bocskay Boglarka
+Boldizsar Norbert
+Csaszar Sandor
+Gencsi Mihaly
+Hajdo Nora
+Juhasz Anton
+Koncse Balazs
+Kovacs Gyula
+Laszlo Hunor
+Marton Ildiko-Beata
+Schuller Mark
+Szabo Tamas
+Szepesi Anita
+Szoke Beatrice
+Szopos-Papp Felix
+Tunyogi Gyorgy
+Viezer Balazs
+[baam0146@localhost labor1]$ 
+
+- a "pontok" állomány sorainak formátuma: vezetéknév keresztnév pontszám
+  ahol a pontszám egy 0 és 200 közötti egész szám rendezzük az állomány sorait a 
+  pontszámok csökkenő sorrendjében
+- ellenőrizzük, hogy a "névsor" állomány sorai abc sorrendben vannak-e
+- a "szamok" allomány sorai ":"-al elválasztott számokat tartalmaznak (soronként 
+  legalább három szám). Rendezzük az állományt a második mező számai szerint 
+  növekvő sorrendbe
+- "f1" és "f2" két rendezett állomány. Fésüljük össze a két állomány tartalmát
+
+comm
+- hasonlítsuk össze a "pr1" és "pr2" rendezett (!) állományok tartalmát soronként
+- csak azokat a sorokat írassuk ki "pr1" és "pr2"-ből, amelyek nem közösek
+- írassuk ki a "pr1" és "pr2" rendezett állományok azon sorait, amelyek mindkettőben 
+  szerepelnek
+
+diff
+- hasonlítsuk össze az aktuális katalógusban levő "pr1" és a szülőkatalógusban levő 
+  "pr1" állományok tartalmát  
+- állapítsuk meg a "pr1" illetve "pr2" állományról, hogy azonosak-e
+  a "p1" állomány tartalma: 
+
+    if  date|grep "Mon"
+    echo szia
+    fi
+
+  a "p2" állományé pedig:
+
+    if :
+    then 
+    echo szia
+    fi
+
+  Hasonlítsuk össze a két állomány tartalmát és röviden értelmezzük az eredményt.
+
+head
+- listázzuk ki a "proba" állomány első tíz sorát
+- listázzuk ki a "proba" állomány első 5 sorát
+- listázzuk ki a "proba" állomány első 20 karakterét
+- listázzuk ki a "proba" állomány sorait az utolsó 2 kivételével 
+
+tail
+- listázzuk ki a "pr1" és "pr2" állományok utolsó tíz sorát 
+- listázzuk ki az "/etc/passwd" állomány utolsó 5 sorát
+- listázzuk ki az aktuális katalógus szülőkatalógusában levő "p1" állomány utolsó 
+  10 byte-ját
+
+cut
+- írassuk ki a "proba" állomány minden sorának 5. és 6. karakterét
+- hozzunk létre egy "proba1" állományt, amely soraiban a mezőket a TAB karakter 
+  válassza el, majd írassuk ki minden sorból az 5. mezőt
+- írassuk ki a "/etc/passwd" állományból a felhasználók nevét (5. mező, 
+  mezőelválasztó a ":" karakter)
+
+uniq
+- egy megfelelően létrehozott "proba" állományból töröljük ki az egymásután 
+  ismétlődő sorokat
+- egy megfelelően létrehozott "proba" állományból csak az egymásután többször 
+  ismétlődő sorokat írassuk ki
+- egy megfelelően létrehozott "proba" állományból írassuk ki mindcen sor elé, hogy 
+  egymás után hányszor szerepel
+
+wc
+- írassuk ki a "proba" nevű állomány sorainak, szavainak, illetve karaktereinek 
+  számát
+- írassuk ki az "/etc/passwd" állomány sorainak számát
+- írassuk ki a "proba" nevű állomány leghosszabb sorának számát
+- írassuk ki a "proba" nevű állomány szavainak számát
+- írassuk ki az alapkatalógusban levő "p1" nevű állomány karaktereinek számát
+
+ln
+- készítsünk szimbolikus linket, melynek neve "info" és az "/etc/passwd" állományra 
+  mutat
+- hozzunk létre hard link-et a "p1" és "p2" állományra a tmp katalógusban
+
+chmod
+- adjunk végrehajtásjogot a tulajdonosnak a "proba.sh" állományra
+- vegyük el az olvasásjogot a csoport tagjaitól és a többi felhasználótól a 
+  "proba.sh" állományra 
+- a csoport tagjainak jogait változtassuk meg úgy, hogy olvasás- és írás-joguk legyen
+  a "proba.sh" állományra
+- állítsuk be a "proba.sh" állomány jogait  "rwxr-xr--"-re oktális számként adva meg 
+  a jogokat
+- adjunk írasjogot a próba állományra azon felhasználóknak, akik nem tartoznak az
+  állomány csoportjába  
+- adjunk végrehajtási jogot a próba állományt tartalmazó katalógusra és a benne levő
+  állományokra rekurzívan, a csoportjában levő felhasználóknak
+
+find
+- listázzuk ki rekurzívan az aktuális katalógus összes állományát
+- keressük meg a "dir" katalógusban és alkatalógusaiban levő összes közönséges 
+  állományt
+- keressük meg a "/tmp" katalógusban és alkatalógusaiban szereplő azon 
+  állományokat, melyeknek csoport azonosítója ugyanaz, mint a mienk
+- listázzuk ki rekurzívan az aktuális katalógus összes olyan állományát, melyre 
+  mindenkinek van minden (írás/olvasás/végrehajtás) joga
+- az alapkatalógusunkban és ennek alkatalógusaiban szereplő azon állományokat 
+  listázzuk ki, melyeknek mérete 100kbyte-n'l nagyobb
+- listázzuk ki rekurzívan az aktuális katalógus összes txt-vel végződő állományát 
+- listázzuk ki rekurzívan az alapkatalógus összes olyan állományát, mely kevesebb 
+  mint 10 napja voltak utoljára módosítva
+- listázzuk ki az aktuális katalógus üres állományait. A keresés max. 1 szint 
+  mélységig történjen.
+- listázzuk ki rekurzívan az aktuális katalógus összes 10kbyte-nál kisebb  
+  állományának teljes nevét és méretét (byte-okban)
+
+file
+- írassuk ki az aktuális katalógusban levő "proba" állomány típusát
+- írassuk ki az /bin/ls állomány típusát 
+- írassuk ki egy .jpg kiterjesztésű képfile típusát
+- írassuk ki egy általunk létrehozott szimbolikus link típusát rövid formátumban 
+  (az állomány neve nélkül)
+- írassuk ki a /tmp katalógus összes állományának típusát
+
+du
+- írassuk ki az aktuális katalógus és alkatalógusai méretét 
+- írassuk ki a próba nevű állományt tartalmazó katalógus, és a benne levő 
+  állományok méretét, valamint az összméretet. 
+- írassuk ki egy minimum két állományt tartalmazó  katalógusunkban szereplő 
+  állományok méretét különböző egységekben (Kilobit, Kilobyte, Megabit, Megabyte)
+- írassuk ki a felhasználói katalógusban szereplő állományok méretét és ezek utolsó 
+  módosítási dátumát 
+
+df
+- írassuk ki az állományrendszerek lemezhasználati adatait 
+- írassuk ki az állományrendszerek lemezhasználati adatait "human readable"    	
+  formátumban 
+- írassuk ki az állományrendszerek i-nod táblára vonatkozó adatait valamint ezek 
+  típusát 
+- írassuk ki az összes állományrendszer lemezhasználati adatait Kilobyte, valamint 
+  Megabyteban 
+  
+ps
+- listázzuk az aktív terminálhoz tartozó folyamatokat és ezek állapotát. 
+- listázzuk ki a rendszerben futó összes folyamatot (más felhasznalókét is), és 
+  ezek állapotát  
+- listázzuk a saját felhasználónkhoz tartozó aktív folyamatokat 
+- listázzuk a csoportunkhoz tartozó folyamatokat hosszú formátumban 
+
+bg 
+- indítsunk el egy folyamatot, majd állítsuk le ctrl-z billentyűkombinációval.  
+  Folytassuk a folyamat futtatását, ezúttal a háttérben
+
+fg
+- kérdezzük le az aktív folyamatok listáját, majd hozzuk előtérbe a háttérben futó 
+  folyamatokat. 
+ 
+kill 
+- listázzuk az összes kill paranccsal küldhető jel megnevezését és sorszámát
+- állítsuk le az összes leállítható folyamat működését 
+- állítsuk le egy aktív folyamat működését  PID alapján SIGTERM jelezés küldésével 
+
+
+
