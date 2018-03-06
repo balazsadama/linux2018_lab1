@@ -448,21 +448,138 @@ Viezer Balazs
 - a "pontok" állomány sorainak formátuma: vezetéknév keresztnév pontszám
   ahol a pontszám egy 0 és 200 közötti egész szám rendezzük az állomány sorait a 
   pontszámok csökkenő sorrendjében
+[baam0146@localhost labor1]$ sort -rgk 3 pontok 
+Viezer Balazs 189
+Kovacs Gyula 180
+Szepesi Anita 159
+Szabo Tamas 159
+Gencsi Mihaly 157
+Schuller Mark 144
+Marton Ildiko-Beata 139
+Balazs Adam 129
+Tunyogi Gyorgy 117
+Koncse Balazs 116
+Szoke Beatrice 111
+Balazs Zoltan 110
+Juhasz Anton 102
+Bocskay Boglarka 101
+Balla Gabriella 90
+Hajdo Nora 88
+Csaszar Sandor 79
+Bedo Norbert 72
+Laszlo Hunor 57
+Szopos-Papp Felix 49
+Boldizsar Norbert 40
+Benko Daniel 28
+[baam0146@localhost labor1]$ 
+
 - ellenőrizzük, hogy a "névsor" állomány sorai abc sorrendben vannak-e
+[baam0146@localhost labor1]$ sort -c nevsor 
+sort: nevsor:4: disorder: Benko Daniel
+[baam0146@localhost labor1]$ 
+
 - a "szamok" allomány sorai ":"-al elválasztott számokat tartalmaznak (soronként 
   legalább három szám). Rendezzük az állományt a második mező számai szerint 
   növekvő sorrendbe
+[baam0146@localhost labor1]$ sort -gt : -k 2 szamok 
+153:38:32:20
+200:49:57
+9:58:146
+72:77:39
+112:89:21:62:11
+155:96:31
+98:103:90
+119:133:172
+134:165:44:19:143
+30:175:193
+46:197:43:184
+[baam0146@localhost labor1]$ 
+
 - "f1" és "f2" két rendezett állomány. Fésüljük össze a két állomány tartalmát
+[baam0146@localhost labor1]$ sort f1 f2
+alma
+Balazs Adam
+Balazs Zoltan
+Balla Gabriella
+banan
+Bedo Norbert
+Benko Daniel
+Bocskay Boglarka
+Boldizsar Norbert
+Csaszar Sandor
+Gencsi Mihaly
+Hajdo Nora
+Juhasz Anton
+Koncse Balazs
+korte
+Kovacs Gyula
+Laszlo Hunor
+Marton Ildiko-Beata
+narancs
+Schuller Mark
+Szabo Tamas
+Szepesi Anita
+szilva
+Szoke Beatrice
+Szopos-Papp Felix
+Tunyogi Gyorgy
+Viezer Balazs
+[baam0146@localhost labor1]$ 
+
 
 comm
 - hasonlítsuk össze a "pr1" és "pr2" rendezett (!) állományok tartalmát soronként
+[baam0146@localhost labor1]$ comm pr1 pr2
+alma
+banan
+		dio
+eper
+	grepfrut
+	kivi
+		malna
+meggy
+	ribizli
+szolo
+	vadalma
+[baam0146@localhost labor1]$ 
+
 - csak azokat a sorokat írassuk ki "pr1" és "pr2"-ből, amelyek nem közösek
+[baam0146@localhost labor1]$ comm -3 pr1 pr2
+alma
+banan
+eper
+	grepfrut
+	kivi
+meggy
+	ribizli
+szolo
+	vadalma
+[baam0146@localhost labor1]$ 
+
 - írassuk ki a "pr1" és "pr2" rendezett állományok azon sorait, amelyek mindkettőben 
   szerepelnek
+[baam0146@localhost labor1]$ comm -12 pr1 pr2
+dio
+malna
+[baam0146@localhost labor1]$ 
+
 
 diff
 - hasonlítsuk össze az aktuális katalógusban levő "pr1" és a szülőkatalógusban levő 
   "pr1" állományok tartalmát  
+[baam0146@localhost labor1]$ diff pr1 ../pr1 
+1c1
+< alma
+---
+> almam
+3,4c3
+< dio
+< eper
+---
+> diok
+[baam0146@localhost labor1]$ 
+
+???????????????????????????????????????????????????????????????????????????????
 - állapítsuk meg a "pr1" illetve "pr2" állományról, hogy azonosak-e
   a "p1" állomány tartalma: 
 
@@ -481,15 +598,102 @@ diff
 
 head
 - listázzuk ki a "proba" állomány első tíz sorát
+[baam0146@localhost labor1]$ head proba 
+Balazs Adam
+Balazs Zoltan
+Balla Gabriella
+Bedo Norbert
+Benko Daniel
+Bocskay Boglarka
+Boldizsar Norbert
+Csaszar Sandor
+Gencsi Mihaly
+Hajdo Nora
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki a "proba" állomány első 5 sorát
+[baam0146@localhost labor1]$ head -n 5 proba 
+Balazs Adam
+Balazs Zoltan
+Balla Gabriella
+Bedo Norbert
+Benko Daniel
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki a "proba" állomány első 20 karakterét
+[baam0146@localhost labor1]$ head -c 20 proba 
+Balazs Adam
+Balazs Z[baam0146@localhost labor1]$ 
+
 - listázzuk ki a "proba" állomány sorait az utolsó 2 kivételével 
+[baam0146@localhost labor1]$ head -n -2 proba 
+Balazs Adam
+Balazs Zoltan
+Balla Gabriella
+Bedo Norbert
+Benko Daniel
+Bocskay Boglarka
+Boldizsar Norbert
+Csaszar Sandor
+Gencsi Mihaly
+Hajdo Nora
+Juhasz Anton
+Koncse Balazs
+Kovacs Gyula
+Laszlo Hunor
+Marton Ildiko-Beata
+Schuller Mark
+Szabo Tamas
+Szepesi Anita
+Szoke Beatrice
+Szopos-Papp Felix
+[baam0146@localhost labor1]$ 
+
 
 tail
 - listázzuk ki a "pr1" és "pr2" állományok utolsó tíz sorát 
+[baam0146@localhost labor1]$ tail pr1 pr2
+==> pr1 <==
+meggy
+szolo
+mazsola
+mango
+citrom
+afonya
+ribizli
+pomelo
+szeder
+korte
+
+==> pr2 <==
+ribizlik
+vadalmak
+dinnyek
+narancsok
+citromok
+bananok
+kortek
+afonyak
+barackok
+mazsolak
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki az "/etc/passwd" állomány utolsó 5 sorát
+[baam0146@localhost labor1]$ tail -n 5 /etc/passwd
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+adam:x:1000:1000:Adam Balazs:/home/adam:/bin/bash
+vboxadd:x:985:1::/var/run/vboxadd:/bin/false
+baam0146:x:1001:1002:Adam:/home/baam0146:/bin/bash
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki az aktuális katalógus szülőkatalógusában levő "p1" állomány utolsó 
   10 byte-ját
+[baam0146@localhost labor1]$ tail -c 10 ../p1
+ggy
+szolo
+[baam0146@localhost labor1]$ 
+
 
 cut
 - írassuk ki a "proba" állomány minden sorának 5. és 6. karakterét
