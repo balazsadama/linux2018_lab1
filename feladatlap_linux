@@ -697,12 +697,97 @@ szolo
 
 cut
 - írassuk ki a "proba" állomány minden sorának 5. és 6. karakterét
+[baam0146@localhost labor1]$ cut -b 5,6 proba 
+zs
+zs
+a 
+ N
+o 
+ka
+iz
+za
+si
+o 
+sz
+se
+cs
+lo
+on
+ll
+o 
+es
+e 
+os
+og
+er
+[baam0146@localhost labor1]$ 
+
+?????????????????????????????????????????????????????????????????????????????????
 - hozzunk létre egy "proba1" állományt, amely soraiban a mezőket a TAB karakter 
   válassza el, majd írassuk ki minden sorból az 5. mezőt
+[baam0146@localhost labor1]$ cat >proba1
+egy	ketto	harom	negy	ot	hat	het
+nyolc	kilenc	tiz	tizenegy	tizenketto	tizenharom
+tizennegy	tizenot	tizenhat	tizenhet	tizennyolc	tizenkilenc	husz
+[baam0146@localhost labor1]$ cut -f 5 proba1
+ot
+tizenketto
+tizennyolc
+[baam0146@localhost labor1]$ 
+
+???????????????????????????????????????????????????????????????????????????????????
 - írassuk ki a "/etc/passwd" állományból a felhasználók nevét (5. mező, 
   mezőelválasztó a ":" karakter)
+[baam0146@localhost labor1]$ cut -d : -f 5 /etc/passwd
+root
+bin
+daemon
+adm
+lp
+sync
+shutdown
+halt
+mail
+operator
+games
+FTP User
+Nobody
+Apache
+systemd Core Dumper
+systemd Time Synchronization
+systemd Network Management
+systemd Resolver
+System message bus
+User for polkitd
+qemu user
+RealtimeKit
+PulseAudio System Daemon
+GlusterFS daemons
+Avahi mDNS/DNS-SD Stack
 
-uniq
+usbmuxd user
+OpenVPN
+radvd user
+PipeWire System Daemon
+User for geoclue
+Rpcbind Daemon
+User for colord
+Saslauthd user
+Default user for running openvpn spawned by NetworkManager
+NetworkManager user for OpenConnect
+
+
+
+RPC Service User
+
+Privilege-separated SSH
+Account used by the trousers package to sandbox the tcsd daemon
+
+Adam Balazs
+
+Adam
+[baam0146@localhost labor1]$ 
+
 - egy megfelelően létrehozott "proba" állományból töröljük ki az egymásután 
   ismétlődő sorokat
 - egy megfelelően létrehozott "proba" állományból csak az egymásután többször 
