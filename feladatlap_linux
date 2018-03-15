@@ -9,9 +9,206 @@ nem kér egyebet.
 
 ls 
 - ellenőrizzük, hogy az aktuális katalógus üres 
+[baam0146@linux labor1]$ ls
+[baam0146@linux labor1]$
+
 - listázzuk ki a /etc/ katalógus tartalmát
+[baam0146@linux labor1]$ ls /etc/
+abrt                       mc
+acpi                       mcelog
+adjtime                    mime.types  
+aliases                    mke2fs.conf 
+aliases.db                 modprobe.d  
+alsa                       modulefiles 
+alternatives               mongodb.conf
+anacrontab                 motd
+ant.conf                   mtab
+ant.d                      mtools.conf
+apt                        Muttrc
+asound.conf                Muttrc.local
+at.deny                    my.cnf   
+audisp                     nanorc   
+audit                      netconfig
+autofs.conf                NetworkManager
+autofs_ldap_auth.conf      networks
+auto.master                nfsmount.conf
+auto.misc                  nsswitch.conf
+auto.net                   ntp
+auto.smb                   ntp.conf
+avahi                      obex-data-server
+bash_completion.d          odbc.ini
+bashrc                     odbcinst.ini
+bashrc.rpmnew              oddjob
+blkid                      oddjobd.conf  
+bluetooth                  oddjobd.conf.d
+bonobo-activation          openldap
+cas.conf                   openmpi-1.10-x86_64
+centos-release             openmpi-1.8-x86_64
+certmonger                 openmpi-x86_64
+cgconfig.conf              opt
+cgconfig.d                 PackageKit
+cgrules.conf               pam.d
+cgsnapshot_blacklist.conf  pango
+chkconfig.d                passwd
+clamav-milter.conf         passwd-
+clamd.conf                 passwd.OLD
+clamd.d                    pcmcia
+cluster                    pear  
+ConsoleKit                 pear.conf
+corosync                   php.d
+cron.d                     php.ini
+cron.daily                 phpMyAdmin
+cron.deny                  php-tcpdf 
+cron.hourly                pine.conf 
+cron.monthly               pinforc   
+crontab                    pkcs11    
+cron.weekly                pki       
+crypttab                   plymouth 
+csh.cshrc                  pm
+csh.login                  pm-utils-hd-apm-restore.conf
+cups                       polkit-1
+dbus-1                     popt.d  
+default                    portreserve
+depmod.d                   postfix
+dhcp                       ppp
+DIR_COLORS                 prelink.cache
+DIR_COLORS.256color        prelink.conf 
+DIR_COLORS.lightbgcolor    prelink.conf.d
+dovecot                    printcap
+dracut.conf                profile 
+dracut.conf.d              profile.d
+dracut.conf.old.0          profile.rpmnew
+drirc                      protocols
+elinks.conf                pulse
+environment                quotagrpadmins
+ethers                     quotatab
+event.d                    rc   
+exports                    rc0.d
+fail2ban                   rc1.d
+favicon.png                rc2.d
+filesystems                rc3.d
+firefox                    rc4.d
+fonts                      rc5.d
+foomatic                   rc6.d
+fpc.cfg                    rc.d
+fprintd.conf               rc.local  
+freshclam.conf             rc.sysinit
+fstab                      rdma
+fstab.old.0                readahead.conf
+gai.conf                   redhat-lsb
+gconf                      redhat-release  
+gcrypt                     request-key.conf
+gdm                        request-key.d
+ghostscript                resolv.conf  
+gnome-vfs-2.0              roundcubemail
+gnupg                      rpc
+gpm-root.conf              rpm
+gpm-syn.conf               rpmdevtools 
+gpm-twiddler.conf          rsyslog.conf
+group                      rsyslog.d
+group-                     rwtab  
+grub.conf                  rwtab.d
+gshadow                    samba
+gshadow-                   sasl2
+gssapi_mech.conf           scl
+gtk-2.0                    screenrc
+ha.d                       securetty
+hal                        security 
+host.conf                  selinux  
+hosts                      services 
+hosts.allow                sestatus.conf
+hosts.deny                 setuptool.d  
+httpd                      sgml
+idmapd.conf                shadow
+ImageMagick                shadow-
+init                       shadow.bak
+init.conf                  shells
+init.d                     skel  
+inittab                    smart 
+inputrc                    smartd.conf
+ipa                        smrsh
+iproute2                   snmp 
+ipsec.conf                 sos.conf
+ipsec.d                    sound   
+ipsec.secrets              ssh     
+issue                      ssl     
+issue.net                  sssd    
+java                       statetab
+joe                        statetab.d
+jvm                        subversion
+jvm-commmon                sudo.conf 
+jwhois.conf                sudoers   
+kdump-adv-conf             sudoers.d 
+kdump.conf                 sudo-ldap.conf
+krb5.conf                  sysconfig
+krb5.keytab                sysctl.conf
+latrace.conf               sysctl.d   
+latrace.d                  system-release
+ld.so.cache                system-release-cpe
+ld.so.conf                 terminfo
+ld.so.conf.d               texmf      
+letsencrypt                tmpfiles.d
+libaudit.conf              tomcat6   
+libibverbs.d               Trolltech.conf
+libnl                      udev
+libreport                  unbound
+libuser.conf               updatedb.conf
+libvirt                    urlview.conf  
+localtime                  vga
+login.defs                 vimrc
+logrotate.conf             virc 
+logrotate.d                vmware-tools
+lsb-release                vsftpd
+lsb-release.d              warnquota.conf
+ltrace.conf                webalizer.conf
+lvm                        wgetrc
+lynx.cfg                   X11   
+lynx.lss                   xdg
+lynx-site.cfg              xinetd.conf
+magic                      xinetd.d   
+mail                       xml
+mailcap                    yp.conf
+mail.rc                    yum
+makedev.d                  yum.conf
+man.config                 yum.repos.d
+maven
+[baam0146@linux labor1]$
+
 - listázzuk ki a gyökér katalógus tartalmát részletes információkkal (hosszú 
   formátum)
+[baam0146@linux labor1]$ ls / -la
+total 4264
+dr-xr-xr-x  26 root root    4096 Jan 30 16:08 .
+dr-xr-xr-x  26 root root    4096 Jan 30 16:08 ..
+-rw-r--r--   1 root root       0 Jan 30 16:08 .autofsck
+-rw-r--r--   1 root root       0 Sep 24  2012 .autorelabel
+dr-xr-xr-x   2 root root    4096 Jan 27 14:28 bin
+dr-xr-xr-x   4 root root    4096 Jan 30 14:22 boot
+drwxr-xr-x   2 root root    4096 May 29  2015 cd  
+drwxr-xr-x   2 root root    4096 Oct  4 07:52 cgroup
+drwxr-xr-x  18 root root    3740 Jan 31 10:05 dev   
+drwxr-xr-x 150 root root   12288 Feb 28 18:53 etc   
+drwxr-xr-x   5 root root    4096 Mar 30  2017 home  
+dr-xr-xr-x  13 root root    4096 Jun 20  2017 lib   
+dr-xr-xr-x  10 root root   12288 Jan 27 14:28 lib64 
+drwx------   2 root root   16384 Sep 12  2012 lost+found
+drwxr-xr-x   2 root root    4096 Sep 23  2011 media
+drwxr-xr-x   2 root root       0 Jan 30 16:08 misc 
+drwxr-xr-x   2 root root    4096 Jan 18 14:02 mnt  
+drwxr-xr-x   2 root root       0 Jan 30 16:08 net  
+drwxr-xr-x   4 root root    4096 Sep 14 01:29 opt  
+dr-xr-xr-x 539 root root       0 Jan 30 16:07 proc 
+-rw-r--r--   1 root root       0 Nov  4  2013 .readahead_collect
+dr-xr-x---  32 root root    4096 Feb 28 17:00 root
+dr-xr-xr-x   2 root root   12288 Jan 27 14:28 sbin
+drwxr-xr-x   2 root root    4096 Sep 20  2013 selinux
+drwxr-xr-x   2 root root    4096 Sep 23  2011 srv
+drwxr-xr-x  13 root root       0 Jan 30 16:07 sys
+drwxrwxrwt 375 root root 4243456 Mar  1 09:08 tmp
+drwxr-xr-x  14 root root    4096 Dec 20 04:15 usr
+drwxr-xr-x  27 root root    4096 Jan 27  2016 var
+[baam0146@linux labor1]$ 
+
   
 Megjegyzés: most folytassuk a feladatok megoldását a többi paranccsal, majd az mkdir
       parancs után térjünk vissza az ls parancs további feladataihoz.
@@ -28,15 +225,47 @@ Megjegyzés: most folytassuk a feladatok megoldását a többi paranccsal, majd 
 
 cd
 - lépjünk be a gyökér katalógusban levő var/log katalógusba
+[baam0146@linux labor1]$ cd /var/log
+[baam0146@linux log]$ 
+
 - lépjünk innen vissza az alapkatalógusunkba
+[baam0146@linux log]$ cd ~
+[baam0146@linux ~]$ 
+
 - lépjünk az aktuális katalógus szülőkatalógusába
+[baam0146@linux ~]$ cd ..
+[baam0146@linux gr621]$  
+
 
 pwd
 - irassuk ki az aktuális katalógus nevét
+[baam0146@linux gr621]$ pwd
+/home/scs/licenta/an2/gr621
+[baam0146@linux gr621]$ 
 
 tree
 - írassuk ki az alaplatalógusunk szerkezetét, az állományokat is megjelenítve
+[baam0146@linux gr621]$ tree ~
+/home/scs/licenta/an2/gr621/baam0146
+├── labor1
+├── linux 
+│   ├── feladatlap_linux
+│   └── feladatlap_linux~
+└── mail
+
+3 directories, 2 files
+[baam0146@linux gr621]$
+
 - írassuk ki az alaplatalógusunk szerkezetét, csak a katalógusokat megjelenítve
+[baam0146@linux gr621]$ tree ~ -d
+/home/scs/licenta/an2/gr621/baam0146
+├── labor1
+├── linux 
+└── mail  
+
+3 directories
+[baam0146@linux gr621]$
+
 
 mkdir
 - lépjünk be az alapkatalógusunkban levő labor1 katalógusba
@@ -124,7 +353,9 @@ cat: temp1: Is a directory
 - az aktuális katalógusban maradva hozzunk létre a cat parancs segítségével 
   egy-egy állományt a fent megadott katalógusszerkezet temp1, d11 illetve 
   d211 katalógusában (az állományok neve legyen rendre f1, f11 illetve f211)
-?????????????????????????????????????????????????????????????????????
+[baam0146@localhost labor1]$ cat >temp1/f1 >temp1/d11/f11 >temp2/d21/d211/f21
+[baam0146@localhost labor1]$ 
+
 
 more (vagy less)
 - listázzuk ki az "/etc/passwd" nevű állomány tartalmát oldalanként
@@ -281,12 +512,15 @@ cp: overwrite './temp1_copy/d11/proba'? y
 [baam0146@localhost labor1]$ 
 
 - másoljunk át néhány C programot az aktuális katalógusba
-???????????????????????????????????????????????????????????????????????????????????
+[baam0146@localhost labor1]$ cp ~/Desktop/{helloworld.c,goodbyeworld.c} .
+[baam0146@localhost labor1]$ 
 
 
 mv
 - hozzuk újra létre a korábban letörölt temp2 katalógust és alkatalógusait
-???????????????????????????????????????????????????????????????????????????
+[baam0146@localhost labor1]$ mkdir -p temp2/d21/d211
+[baam0146@localhost labor1]$ 
+
 - nevezzük át az aktuális katalógusban levő "proba" állományt "pr"-re.
 [baam0146@localhost labor1]$ mv proba pr
 [baam0146@localhost labor1]$ 
@@ -297,7 +531,9 @@ mv
 
 - helyezzük át az aktuális katalógusban levő "f1" állományt a temp2/d2 
   katalógusba "f1_backup" néven
-???????????????????????????????????????????????????????????????????????????
+[baam0146@localhost labor1]$ mv f1 temp2/d21/f1_backup
+[baam0146@localhost labor1]$ 
+
 
 rm
 - töröljük az aktuális katalógusban levő "pr1" állományt
@@ -328,7 +564,9 @@ rm: remove directory 'temp1'? y
   
 rename
 - hozzunk létre néhány .pp-vel végződő nevű állományt
-????????????????????????????????????????????????????????????????????????
+[baam0146@localhost labor1]$ touch one.pp two.pp three.pp four.pp
+[baam0146@localhost labor1]$ 
+
 - nevezzünk át az aktuális katalógusbanban minden .pp végződésű állományt .C 
   végződésűre  
 [baam0146@localhost labor1]$ rename .pp .c *.pp
@@ -337,26 +575,298 @@ rename
 
 w
 - listázzuk ki, hogy kik vannak bejelentkezve a rendszerbe és ki mit csinál
+[baam0146@linux labor1]$ w
+ 09:02:22 up 36 days, 16:54, 42 users,  load average: 0.06, 0.13, 0.19
+USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
+baam0146 pts/0    82.208.133.143   08:59    0.00s  0.17s  0.09s w
+bradu    pts/2    nessie.cs.ubbclu 27Feb18 47:45m  0.23s  0.06s sshd: 
+heir2432 pts/3    172.30.113.134   08:06    8:45   0.34s  0.34s -bash
+gair2431 pts/4    172.30.112.96    08:07    8.00s  0.29s  0.07s vim te
+bnam0154 pts/6    82.208.133.143   08:09   10:16   1.04s  0.94s joe fe
+piir2373 pts/7    172.30.115.56    08:10   46:28   0.14s  0.09s vim
+bnam0150 pts/9    82.208.133.143   08:24   24.00s  0.42s  0.42s -bash
+smam0173 pts/10   82.208.133.143   08:10    0.00s  0.37s  0.37s -bash
+bnam0154 pts/11   82.208.133.143   08:10   29.00s  0.53s  0.53s -bash
+pmir2368 pts/13   172.30.118.239   08:18    8:44   0.19s  0.19s -bash
+bnam0150 pts/14   82.208.133.143   08:13   42:21   0.07s  0.07s -bash
+tgam0181 pts/15   82.208.133.143   08:15   42:12   0.06s  0.06s -bash
+rrir2390 pts/17   172.30.113.55    08:55    0.00s  0.07s  0.07s -bash
+bzam0147 pts/18   82.208.133.143   08:21   54.00s  0.18s  0.18s -bash
+piir2373 pts/19   172.30.115.56    08:16   39:16   0.19s  0.12s vim
+ddam0157 pts/20   82.208.133.143   08:34    1:46   1.01s  0.93s joe fe
+piir2373 pts/21   172.30.115.56    08:28    7:24   0.14s  0.14s -bash
+bnam0154 pts/22   82.208.133.143   08:24   15:48   0.14s  0.01s man la
+ktar1756 pts/23   172.30.119.144   08:29    5.00s  0.16s  0.01s pico m
+tgam0181 pts/24   82.208.133.143   08:25   24:29   0.16s  0.16s -bash
+tcar1818 pts/25   172.30.113.132   08:59    1:57   0.10s  0.01s man ls
+mrir2154 pts/26   172.30.119.177   08:52    5:33   0.17s  0.17s -bash
+baam0146 pts/27   82.208.133.143   08:45    7:39   0.32s  0.23s joe fe
+taar1821 pts/29   172.30.117.110   08:29    8.00s  0.19s  0.05s pico
+ovar1780 pts/30   172.30.113.142   08:29    5:24   0.09s  0.09s -bash
+ptar1782 pts/31   172.30.115.201   08:29    4.00s  0.74s  0.39s ssh pt
+prir2372 pts/32   172.30.115.25    08:30    2:38   0.33s  0.33s -bash
+bcir2425 pts/33   172.30.115.76    08:56    4:26   0.08s  0.08s -bash
+pvir2374 pts/34   172.30.116.45    08:40   21:07   0.16s  0.09s vim la
+ddam0157 pts/35   82.208.133.143   08:30    2.00s  0.20s  0.20s -bash
+hnam0161 pts/37   82.208.133.143   08:30    5:06   1.26s  1.16s joe fe
+bzam0147 pts/38   82.208.133.143   08:36    0.00s  1.25s  1.14s joe fe
+lgam0168 pts/40   82.208.133.143   08:31   14:04   0.52s  0.43s vim fe
+sgar1813 pts/41   172.30.112.72    08:52   17.00s  0.15s  0.15s -bash
+pvir2369 pts/42   172.30.115.154   08:35    2.00s  0.40s  0.25s -bash
+lgam0168 pts/43   82.208.133.143   08:43   14:45   0.06s  0.06s -bash
+pvir2374 pts/44   172.30.119.204   08:45   10:19   0.08s  0.08s -bash
+saar1809 pts/45   172.30.114.105   08:53    2:06   0.12s  0.00s man ft
+ptar1782 pts/46   localhost        08:47    4.00s  0.39s  0.18s -bash
+baam0146 pts/47   82.208.133.143   08:58   24.00s  0.09s  0.01s joe fe
+dbir2095 pts/48   172.30.112.66    08:54    1.00s  0.68s  0.58s joe in
+lgam0168 pts/50   82.208.133.143   09:00   23.00s  0.07s  0.01s joe fe
+[baam0146@linux labor1]$ 
+
 - listázzuk ki a bejelentkezett felhasználókat úgy, hogy a fejléc ne 
   jelenjen meg
+[baam0146@linux labor1]$ w -h
+baam0146 pts/0    82.208.133.143   08:59    0.00s  0.18s  0.09s w -h
+bradu    pts/2    nessie.cs.ubbclu 27Feb18 47:45m  0.23s  0.06s sshd: 
+heir2432 pts/3    172.30.113.134   08:06    9:27   0.34s  0.34s -bash
+gair2431 pts/4    172.30.112.96    08:07    1.00s  0.22s  0.22s -bash
+bnam0154 pts/6    82.208.133.143   08:09   10:58   1.04s  0.94s joe fe
+piir2373 pts/7    172.30.115.56    08:10   47:10   0.14s  0.09s vim
+bnam0150 pts/9    82.208.133.143   08:24   24.00s  0.42s  0.42s -bash
+smam0173 pts/10   82.208.133.143   08:10   24.00s  0.44s  0.00s man fi
+bnam0154 pts/11   82.208.133.143   08:10    1.00s  0.56s  0.56s -bash
+pmir2368 pts/13   172.30.118.239   08:18    9:26   0.19s  0.19s -bash
+bnam0150 pts/14   82.208.133.143   08:13   43:03   0.07s  0.07s -bash
+tgam0181 pts/15   82.208.133.143   08:15   42:54   0.06s  0.06s -bash
+rrir2390 pts/17   172.30.113.55    08:55    3.00s  0.15s  0.06s vim ma
+bzam0147 pts/18   82.208.133.143   08:21    4.00s  0.18s  0.18s -bash
+piir2373 pts/19   172.30.115.56    08:16   39:58   0.19s  0.12s vim
+ddam0157 pts/20   82.208.133.143   08:34    2:28   1.01s  0.93s joe fe
+piir2373 pts/21   172.30.115.56    08:28    8:06   0.14s  0.14s -bash
+bnam0154 pts/22   82.208.133.143   08:24   16:30   0.14s  0.01s man la
+ktar1756 pts/23   172.30.119.144   08:29   22.00s  0.15s  0.00s man cp
+tgam0181 pts/24   82.208.133.143   08:25   25:11   0.16s  0.16s -bash
+tcar1818 pts/25   172.30.113.132   08:59    2:39   0.10s  0.01s man ls
+mrir2154 pts/26   172.30.119.177   08:52    6:15   0.17s  0.17s -bash
+baam0146 pts/27   82.208.133.143   08:45    8:21   0.32s  0.23s joe fe
+taar1821 pts/29   172.30.117.110   08:29    5.00s  0.19s  0.05s pico
+ovar1780 pts/30   172.30.113.142   08:29    6:06   0.09s  0.09s -bash
+ptar1782 pts/31   172.30.115.201   08:29    1.00s  0.75s  0.40s ssh pt
+prir2372 pts/32   172.30.115.25    08:30    3:20   0.33s  0.33s -bash
+bcir2425 pts/33   172.30.115.76    08:56    5:08   0.08s  0.08s -bash
+pvir2374 pts/34   172.30.116.45    08:40   21:49   0.16s  0.09s vim la
+ddam0157 pts/35   82.208.133.143   08:30   26.00s  0.20s  0.20s -bash
+hnam0161 pts/37   82.208.133.143   08:30   10.00s  1.29s  1.19s joe fe
+bzam0147 pts/38   82.208.133.143   08:36   42.00s  1.25s  1.14s joe fe
+lgam0168 pts/40   82.208.133.143   08:31   14:46   0.52s  0.43s vim fe
+sgar1813 pts/41   172.30.112.72    08:52   59.00s  0.15s  0.15s -bash
+pvir2369 pts/42   172.30.115.154   08:35   32.00s  0.41s  0.26s -bash
+lgam0168 pts/43   82.208.133.143   08:43   15:27   0.06s  0.06s -bash
+pvir2374 pts/44   172.30.119.204   08:45   11:01   0.08s  0.08s -bash
+saar1809 pts/45   172.30.114.105   08:53   11.00s  0.09s  0.09s -bash
+ptar1782 pts/46   localhost        08:47    9.00s  0.40s  0.18s -bash
+baam0146 pts/47   82.208.133.143   08:58   18.00s  0.31s  0.23s joe fe
+dbir2095 pts/48   172.30.112.66    08:54    2.00s  0.79s  0.69s joe in
+lgam0168 pts/50   82.208.133.143   09:00    1.00s  0.08s  0.02s joe fe
+[baam0146@linux labor1]$ 
+
 - az előbbi kimenet alapján állapítsuk meg, hogy ki "lazsál" a legtöbb ideje
+bradu    pts/2    nessie.cs.ubbclu 27Feb18 47:45m  0.23s  0.06s sshd: 
+
 
 who
 - listázzuk ki, hogy kik vannak bejelentkezve
+[baam0146@linux labor1]$ who
+baam0146 pts/0        2018-03-08 08:59 (82.208.133.143)
+bradu    pts/2        2018-02-27 10:30 (nessie.cs.ubbcluj.ro)
+heir2432 pts/3        2018-03-08 08:06 (172.30.113.134)
+gair2431 pts/4        2018-03-08 08:07 (172.30.112.96)
+bnam0154 pts/6        2018-03-08 08:09 (82.208.133.143)
+piir2373 pts/7        2018-03-08 08:10 (172.30.115.56)
+bnam0150 pts/9        2018-03-08 08:24 (82.208.133.143)
+smam0173 pts/10       2018-03-08 08:10 (82.208.133.143)
+bnam0154 pts/11       2018-03-08 08:10 (82.208.133.143)
+pmir2368 pts/13       2018-03-08 08:18 (172.30.118.239)
+bnam0150 pts/14       2018-03-08 08:13 (82.208.133.143)
+tgam0181 pts/15       2018-03-08 08:15 (82.208.133.143)
+rrir2390 pts/17       2018-03-08 08:55 (172.30.113.55)
+bzam0147 pts/18       2018-03-08 08:21 (82.208.133.143)
+piir2373 pts/19       2018-03-08 08:16 (172.30.115.56)
+ddam0157 pts/20       2018-03-08 08:34 (82.208.133.143)
+piir2373 pts/21       2018-03-08 08:28 (172.30.115.56)
+bnam0154 pts/22       2018-03-08 08:24 (82.208.133.143)
+ktar1756 pts/23       2018-03-08 08:29 (172.30.119.144)
+tgam0181 pts/24       2018-03-08 08:25 (82.208.133.143)
+tcar1818 pts/25       2018-03-08 08:59 (172.30.113.132)
+mrir2154 pts/26       2018-03-08 08:52 (172.30.119.177)
+baam0146 pts/27       2018-03-08 08:45 (82.208.133.143)
+bdir2243 pts/28       2018-03-08 09:03 (172.30.114.255)
+taar1821 pts/29       2018-03-08 08:29 (172.30.117.110)
+ovar1780 pts/30       2018-03-08 08:29 (172.30.113.142)
+ptar1782 pts/31       2018-03-08 08:29 (172.30.115.201)
+prir2372 pts/32       2018-03-08 08:30 (172.30.115.25)
+bcir2425 pts/33       2018-03-08 08:56 (172.30.115.76)
+pvir2374 pts/34       2018-03-08 08:40 (172.30.116.45)
+ddam0157 pts/35       2018-03-08 08:30 (82.208.133.143)
+hnam0161 pts/37       2018-03-08 08:30 (82.208.133.143)
+bzam0147 pts/38       2018-03-08 08:36 (82.208.133.143)
+lgam0168 pts/40       2018-03-08 08:31 (82.208.133.143)
+sgar1813 pts/41       2018-03-08 08:52 (172.30.112.72)
+pvir2369 pts/42       2018-03-08 08:35 (172.30.115.154)
+lgam0168 pts/43       2018-03-08 08:43 (82.208.133.143)
+pvir2374 pts/44       2018-03-08 08:45 (172.30.119.204)
+saar1809 pts/45       2018-03-08 08:53 (172.30.114.105)
+ptar1782 pts/46       2018-03-08 08:47 (localhost)
+baam0146 pts/47       2018-03-08 08:58 (82.208.133.143)
+[baam0146@linux labor1]$ 
+
 - listázzuk ki a rendszerben dolgozó felhasználók azonosítóját és hogy hányan 
   vannak bejelentkezve
+[baam0146@linux labor1]$ who -q
+baam0146 bradu heir2432 gair2431 bnam0154 piir2373 bnam0150 smam0173
+bnam0154 pmir2368 bnam0150 tgam0181 rrir2390 bzam0147 piir2373 ddam0157
+piir2373 bnam0154 ktar1756 tgam0181 tcar1818 mrir2154 baam0146 bdir2243
+taar1821 ovar1780 ptar1782 prir2372 bcir2425 pvir2374 ddam0157 hnam0161
+bzam0147 lgam0168 sgar1813 pvir2369 lgam0168 pvir2374 saar1809 ptar1782
+baam0146 lgam0168
+# users=42
+[baam0146@linux labor1]$ 
+
 
 finger
 - írjunk ki információt a jelenleg bejelentkezett felhasználókról
+[baam0146@linux labor1]$ finger
+Login    Name                    Tty      Idle  Login Time   Office
+Office Phone
+baam0146 Balazs A Adam Attila    pts/0          Mar  8 08:59
+(82.208.133.143)
+baam0146 Balazs A Adam Attila    pts/27     13  Mar  8 08:45
+(82.208.133.143)
+baam0146 Balazs A Adam Attila    pts/47         Mar  8 08:58
+(82.208.133.143)
+bcir2425 Bodiu D. Catalin        pts/33         Mar  8 08:56 (172.30.115.76)
+bdir2243 Bilaniuc D Dragos Dumi  pts/28         Mar  8 09:03
+(172.30.114.255)
+bnam0150 Bedo K Norbert          pts/9          Mar  8 08:24
+(82.208.133.143)
+bnam0150 Bedo K Norbert          pts/14     48  Mar  8 08:13
+(82.208.133.143)
+bnam0154 Boldizsar J Norbert Be  pts/6          Mar  8 08:09
+(82.208.133.143)
+bnam0154 Boldizsar J Norbert Be  pts/11      1  Mar  8 08:10
+(82.208.133.143)
+bnam0154 Boldizsar J Norbert Be  pts/22     21  Mar  8 08:24
+(82.208.133.143)
+bradu    Radu Dragos            *pts/2      1d  Feb 27 10:30
+(nessie.cs.ubbcluj.ro)
+bzam0147 Balazs A Zoltan         pts/18      1  Mar  8 08:21
+(82.208.133.143)
+bzam0147 Balazs A Zoltan         pts/38         Mar  8 08:36
+(82.208.133.143)
+ddam0157 Dulli I David Patrik    pts/20      1  Mar  8 08:34
+(82.208.133.143)
+ddam0157 Dulli I David Patrik    pts/35      1  Mar  8 08:30
+(82.208.133.143)
+gair2431 Goia F. Ariana Carmen   pts/4       1  Mar  8 08:07 (172.30.112.96)
+heir2432 Holhos G. Emanuel       pts/3          Mar  8 08:06
+(172.30.113.134)
+hnam0161 Hajdo L Nora            pts/37      2  Mar  8 08:30
+(82.208.133.143)
+ktar1756 Kovacs T. Timea         pts/23      5  Mar  8 08:29
+(172.30.119.144)
+lgam0168 Laczko GY Gyula Tihame  pts/40     20  Mar  8 08:31
+(82.208.133.143)
+lgam0168 Laczko GY Gyula Tihame  pts/43     20  Mar  8 08:43
+(82.208.133.143)
+lgam0168 Laczko GY Gyula Tihame  pts/48         Mar  8 09:06
+(82.208.133.143)
+mrir2154 Mondoc L.G. Robert      pts/26     11  Mar  8 08:52
+(172.30.119.177)
+ovar1780 Obreja V. Vlad Alexand  pts/30     11  Mar  8 08:29
+(172.30.113.142)
+piir2373 Penciuc R Iulia Raluca  pts/7      52  Mar  8 08:10 (172.30.115.56)
+piir2373 Penciuc R Iulia Raluca  pts/19     45  Mar  8 08:16 (172.30.115.56)
+piir2373 Penciuc R Iulia Raluca  pts/21      1  Mar  8 08:28 (172.30.115.56)
+pmir2368 Palancianu F Malina Fl  pts/13      1  Mar  8 08:18
+(172.30.118.239)
+prir2372 Pausan G.V. Rares Vasi  pts/32         Mar  8 08:30 (172.30.115.25)
+ptar1782 Pantis S.V. Timotei     pts/31         Mar  8 08:29
+(172.30.115.201)
+ptar1782 Pantis S.V. Timotei     pts/46         Mar  8 08:47 (localhost)
+pvir2369 Pantazescu A Vlad Octa  pts/42      2  Mar  8 08:35
+(172.30.115.154)
+pvir2374 Persa D.S. Vlad         pts/34     27  Mar  8 08:40 (172.30.116.45)
+pvir2374 Persa D.S. Vlad         pts/44     16  Mar  8 08:45
+(172.30.119.204)
+pvir2374 Persa D.S. Vlad         pts/49         Mar  8 09:08
+(172.30.119.204)
+rrir2390 Roatis M.M. Razvan      pts/17      1  Mar  8 08:55 (172.30.113.55)
+saar1809 Stan I.C. Andrei        pts/45      3  Mar  8 08:53
+(172.30.114.105)
+smam0173 Schuller T Mark         pts/10         Mar  8 08:10
+(82.208.133.143)
+taar1821 Todea I. Anca Elena     pts/29         Mar  8 08:29
+(172.30.117.110)
+tcar1818 Timaru N. Carmen Ioana  pts/25         Mar  8 08:59
+(172.30.113.132)
+tgam0181 Tunyogi E. SZ. Gyorgy   pts/15     48  Mar  8 08:15
+(82.208.133.143)
+tgam0181 Tunyogi E. SZ. Gyorgy   pts/24     30  Mar  8 08:25
+(82.208.133.143)
+[baam0146@linux labor1]$ 
+
 - írjuk ki a saját felhasználóra vonatkozó információkat
+[baam0146@linux labor1]$ finger baam0146
+Login: baam0146       			Name: Balazs A Adam Attila
+Directory: /home/scs/licenta/an2/gr621/baam0146	Shell: /bin/bash
+On since Thu Mar  8 08:59 (EET) on pts/0 from 82.208.133.143
+On since Thu Mar  8 08:58 (EET) on pts/47 from 82.208.133.143
+   1 minute 33 seconds idle
+New mail received Wed Mar  7 15:31 2018 (EET)
+     Unread since Mon Feb 26 09:41 2018 (EET)
+No Plan.
+[baam0146@linux labor1]$ 
+
 - írjuk ki a root felhasználóra vonatkozó információkat rövid formátumban
+[baam0146@linux labor1]$ finger -s root
+Login     Name       Tty      Idle  Login Time   Office     Office Phone
+root      root       tty2        *  Nov 25 07:56
+[baam0146@linux labor1]$ 
+???????????????????????????????????????????????????????????????
+
 - állapítsuk meg a finger parancs kimenetéből, hogy egy tetszőleges felhasználónak 
   van-e olvasatlan levele vagy sem.
+Login: saar1809       			Name: Stan I.C. Andrei
+Directory: /home/scs/licenta/an2/gr323/saar1809	Shell: /bin/bash
+On since Thu Mar  8 08:53 (EET) on pts/45 from 172.30.114.105
+   4 minutes 33 seconds idle
+New mail received Wed Mar  7 09:57 2018 (EET)
+     Unread since Sat Nov 25 00:40 2017 (EET)
+
 
 last
 - listázzuk a legutóbbi belépéseket (a wtmp logfájl adatai alapján)
+[baam0146@linux labor1]$ last
+lgam0168 pts/27       82.208.133.143   Thu Mar  8 09:16   still logged in   
+lgam0168 pts/27       82.208.133.143   Thu Mar  8 09:13 - 09:15  (00:02)    
+tmar1819 pts/41       172.30.112.54    Thu Mar  8 09:12 - 09:14  (00:01)    
+ptar1782 pts/31       172.30.115.201   Thu Mar  8 09:11 - 09:16  (00:04)    
+lgam0168 pts/27       82.208.133.143   Thu Mar  8 09:11 - 09:12  (00:01)    
+
 - listázzuk a saját felhasználó legutóbbi belépéseit 
+[baam0146@linux labor1]$ last baam0146
+baam0146 pts/0        82.208.133.143   Thu Mar  8 08:59   still logged in   
+baam0146 pts/47       82.208.133.143   Thu Mar  8 08:58   still logged in   
+baam0146 pts/27       82.208.133.143   Thu Mar  8 08:45 - 09:10  (00:25)    
+
+wtmp begins Fri Mar  2 23:23:07 2018
+[baam0146@linux labor1]$ 
+
 - listázzuk a root felhasználó legutóbbi 3 belépését
+[baam0146@linux labor1]$ last -n 3 root
+
+wtmp begins Fri Mar  2 23:23:07 2018
+[baam0146@linux labor1]$ 
+
 
 date
 - listázzuk ki a mai dátumot, órát, napot, stb. alapértelmezett formátumban
@@ -867,14 +1377,54 @@ df
   
 ps
 - listázzuk az aktív terminálhoz tartozó folyamatokat és ezek állapotát. 
+[baam0146@linux labor1]$ ps T
+  PID TTY          TIME CMD
+48293 pts/0    00:00:00 bash
+53250 pts/0    00:00:00 ps T
+[baam0146@linux labor1]$ 
+
 - listázzuk ki a rendszerben futó összes folyamatot (más felhasznalókét is), és 
   ezek állapotát  
+[baam0146@linux labor1]$ ps -e
+  PID TTY          TIME CMD
+    1 ?        00:00:14 init
+    2 ?        00:00:00 kthreadd
+    3 ?        00:00:06 migration/0
+    4 ?        00:00:06 ksoftirqd/0
+
 - listázzuk a saját felhasználónkhoz tartozó aktív folyamatokat 
+[baam0146@linux labor1]$ ps -U baam0146
+  PID TTY          TIME CMD
+45707 ?        00:00:00 sshd
+45708 ?        00:00:00 sftp-server
+45732 ?        00:00:00 sshd
+45733 ?        00:00:00 sftp-server
+47949 ?        00:00:01 sshd
+47950 pts/47   00:00:00 bash
+48292 ?        00:00:00 sshd
+48293 pts/0    00:00:00 bash
+48615 ?        00:00:00 sshd
+48616 ?        00:00:00 sftp-server
+48645 ?        00:00:00 sshd
+48647 ?        00:00:00 sftp-server
+48858 pts/47   00:00:02 joe
+55103 pts/0    00:00:00 ps
+[baam0146@linux labor1]$ 
+????????????????????????????????????????????????
+
 - listázzuk a csoportunkhoz tartozó folyamatokat hosszú formátumban 
+[baam0146@linux labor1]$ ps -G student
+  PID TTY          TIME CMD
+ 2579 ?        00:00:00 vim
+ 5182 ?        00:00:00 vim
+ 8212 ?        00:00:00 imap
+12257 ?        00:00:02 imap
+
 
 bg 
 - indítsunk el egy folyamatot, majd állítsuk le ctrl-z billentyűkombinációval.  
   Folytassuk a folyamat futtatását, ezúttal a háttérben
+
 
 fg
 - kérdezzük le az aktív folyamatok listáját, majd hozzuk előtérbe a háttérben futó 
