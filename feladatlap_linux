@@ -1380,18 +1380,18 @@ ln: creating hard link `/tmp/p2' => `p2': Invalid cross-device link
 
 chmod
 - adjunk végrehajtásjogot a tulajdonosnak a "proba.sh" állományra
-[baam0146@linux labor1]$ chmod u=rwx proba.sh 
-[baam0146@linux labor1]$ 
+[baam0146@localhost labor1]$ chmod u+x proba.sh 
+[baam0146@localhost labor1]$ 
 
 - vegyük el az olvasásjogot a csoport tagjaitól és a többi felhasználótól a 
   "proba.sh" állományra 
-[baam0146@linux labor1]$ chmod 700 proba.sh 
-[baam0146@linux labor1]$ 
+[baam0146@localhost labor1]$ chmod go-r proba.sh 
+[baam0146@localhost labor1]$ 
 
 - a csoport tagjainak jogait változtassuk meg úgy, hogy olvasás- és írás-joguk legyen
   a "proba.sh" állományra
-[baam0146@linux labor1]$ chmod 760 proba.sh 
-[baam0146@linux labor1]$ 
+[baam0146@localhost labor1]$ chmod g+rw proba.sh 
+[baam0146@localhost labor1]$ 
 
 - állítsuk be a "proba.sh" állomány jogait  "rwxr-xr--"-re oktális számként adva meg 
   a jogokat
@@ -1400,120 +1400,59 @@ chmod
 
 - adjunk írasjogot a próba állományra azon felhasználóknak, akik nem tartoznak az
   állomány csoportjába  
-[baam0146@linux labor1]$ chmod o=r proba.sh 
+[baam0146@linux labor1]$ chmod o+w proba.sh 
 [baam0146@linux labor1]$ 
 
 - adjunk végrehajtási jogot a próba állományt tartalmazó katalógusra és a benne levő
   állományokra rekurzívan, a csoportjában levő felhasználóknak
-[baam0146@linux labor1]$ chmod -R g=r ~/labor1/*
-chmod: changing permissions of
-`/home/scs/licenta/an2/gr621/baam0146/labor1/info': Operation not permitted
+[baam0146@localhost labor1]$ chmod -R g+x temp1/
+[baam0146@localhost labor1]$ 
 
 
 find
 - listázzuk ki rekurzívan az aktuális katalógus összes állományát
-[baam0146@linux labor1]$ find .
-.
-./two.c
-./pr2
-./four.c
+[baam0146@localhost labor1]$ find -type f
 ./p1
-./proba1
-./pontok
-./info
+./goodbyeworld.c
+./temp2/d21/f1_backup
+./f2
+./helloworld.c
 ./three.c
+./temp_file
+./proba
+./proba1
+./four.c
+./pr1
+./pontok
+./p2
+./pr2
+./two.pp
+./pr
+./szamok
+./four.pp
+./temp1_copy/d11/proba
+./two.c
+./three.pp
+./temp1/d11/f11
+./temp1/proba.sh
+./temp1/f1
+./eredmeny
 ./one.c
 ./nevsor
-./pr1
-./szamok
-./helloworld.c
-./four.pp
-./dir1
-./two.pp
-./temp1_copy
-./temp1_copy/d11
-./temp1_copy/d11/d111
-./temp1_copy/d11/proba
-./temp1_copy/d12
-./p2
-./goodbyeworld.c
-./proba.sh
-./f2
-./proba~
-./temp_file
-./temp2
-./temp2/d21
-./temp2/d21/f1_backup
-./temp2/d21/d211
-./three.pp
-./pldir1
-./pldir1/pldir2
-./pldir1/pldir2/pldir3
-./pr
-./temp1
-./temp1/d11
-./temp1/d11/d111
-./temp1/d11/f11
-./temp1/d12
-./temp1/f1
-./proba
-./eredmeny
 ./one.pp
-[baam0146@linux labor1]$ 
+[baam0146@localhost labor1]$ 
+
 
 - keressük meg a "dir" katalógusban és alkatalógusaiban levő összes közönséges 
   állományt
-[baam0146@linux labor1]$ find *
-dir1
-eredmeny
-f2
-four.c
-four.pp
-goodbyeworld.c
-helloworld.c
-info
-nevsor
-one.c
-one.pp
-p1
-p2
-pldir1
-pldir1/pldir2
-pldir1/pldir2/pldir3
-pontok
-pr
-pr1
-pr2
-proba
-proba~
-proba1
-proba.sh
-szamok
-temp1
-temp1/d11
-temp1/d11/d111
-temp1/d11/f11
-temp1/d12
-temp1/f1
-temp1_copy
-temp1_copy/d11
-temp1_copy/d11/d111
-temp1_copy/d11/proba
-temp1_copy/d12
-temp2
-temp2/d21
-temp2/d21/f1_backup
-temp2/d21/d211
-temp_file
-three.c
-three.pp
-two.c
-two.pp
-[baam0146@linux labor1]$ 
+[baam0146@localhost labor1]$ find dir -type f
+dir/randomallomany
+dir/dirdir/megegyrandomallomany
+[baam0146@localhost labor1]$ 
 
 - keressük meg a "/tmp" katalógusban és alkatalógusaiban szereplő azon 
   állományokat, melyeknek csoport azonosítója ugyanaz, mint a mienk
-??????????????????????????????????????????????????????????????????????????
+?????????????????????????????????????????????????????????????????????????????
 - listázzuk ki rekurzívan az aktuális katalógus összes olyan állományát, melyre 
   mindenkinek van minden (írás/olvasás/végrehajtás) joga
 [baam0146@linux labor1]$ find -perm 777
@@ -1522,39 +1461,308 @@ two.pp
 
 - az alapkatalógusunkban és ennek alkatalógusaiban szereplő azon állományokat 
   listázzuk ki, melyeknek mérete 100kbyte-n'l nagyobb
+[baam0146@localhost labor1]$ find ~ -size +100k
+/home/baam0146/.mozilla/firefox/nkkkmeiq.default/blocklist.xml
+/home/baam0146/.mozilla/firefox/nkkkmeiq.default/webappsstore.sqlite-wal
+/home/baam0146/.mozilla/firefox/nkkkmeiq.default/blocklists/addons.json
+/home/baam0146/.mozilla/firefox/nkkkmeiq.default/blocklists/plugins.json
+/home/baam0146/.mozilla/firefox/nkkkmeiq.default/favicons.sqlite-wal
+
 - listázzuk ki rekurzívan az aktuális katalógus összes txt-vel végződő állományát 
+[baam0146@localhost labor1]$ find *.txt
+one.txt
+three.txt
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki rekurzívan az alapkatalógus összes olyan állományát, mely kevesebb 
   mint 10 napja voltak utoljára módosítva
+[baam0146@localhost labor1]$ find ~ -mtime -10
+/home/baam0146
+/home/baam0146/Desktop
+/home/baam0146/Desktop/goodbyeworld.c
+/home/baam0146/Desktop/helloworld.c
+/home/baam0146/.mozilla/firefox/nkkkmeiq.default
+
 - listázzuk ki az aktuális katalógus üres állományait. A keresés max. 1 szint 
   mélységig történjen.
+[baam0146@localhost labor1]$ find . -maxdepth 1 -empty
+./temp_file
+./four.c
+./one.txt
+./two.pp
+./four.pp
+./dir1
+./two.c
+./three.pp
+./three.txt
+./one.pp
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki rekurzívan az aktuális katalógus összes 10kbyte-nál kisebb  
   állományának teljes nevét és méretét (byte-okban)
+[baam0146@localhost labor1]$ find -type f -size -10k -printf "%f %s\n"
+p1 33
+goodbyeworld.c 99
+f1_backup 318
+allomany1.txt 0
+f2 32
+helloworld.c 90
+temp_file 0
+proba 44
+proba1 144
+four.c 0
+one.txt 0
+pr1 94
+pontok 398
+p2 23
+pr2 115
+two.pp 0
+pr 7
+szamok 132
+four.pp 0
+proba 7
+two.c 0
+three.pp 0
+f11 0
+proba.sh 0
+f1 0
+eredmeny 356
+three.txt 0
+randomallomany 0
+megegyrandomallomany 0
+nevsor 356
+one.pp 0
+[baam0146@localhost labor1]$ 
+
 
 file
 - írassuk ki az aktuális katalógusban levő "proba" állomány típusát
+[baam0146@localhost labor1]$ file proba
+proba: ASCII text
+[baam0146@localhost labor1]$ 
+
 - írassuk ki az /bin/ls állomány típusát 
+[baam0146@localhost labor1]$ file /bin/ls
+/bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=d9aac1757c7c1093305d90f0be1d2258d9206dbb, stripped
+[baam0146@localhost labor1]$ 
+
 - írassuk ki egy .jpg kiterjesztésű képfile típusát
+[baam0146@localhost labor1]$ file puppy.jpg 
+puppy.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 300x300, segment length 16, Exif Standard: [TIFF image data, little-endian, direntries=16, height=3744, bps=206, compression=none, manufacturer=Canon, model=Canon EOS 5D Mark II, orientation=upper-left, width=5616], progressive, precision 8, 748x498, frames 3
+[baam0146@localhost labor1]$ 
+
 - írassuk ki egy általunk létrehozott szimbolikus link típusát rövid formátumban 
   (az állomány neve nélkül)
+[baam0146@localhost labor1]$ file -b info 
+symbolic link to /etc/passwd
+[baam0146@localhost labor1]$ 
+
 - írassuk ki a /tmp katalógus összes állományának típusát
+[baam0146@localhost labor1]$ file /tmp/*
+/tmp/mozilla_baam01460:                                                            directory
+/tmp/systemd-private-06a7e1907d434f1b90fb1ae476240f87-chronyd.service-XqF5Cp:      directory
+/tmp/systemd-private-06a7e1907d434f1b90fb1ae476240f87-colord.service-gsnZeF:       directory
+/tmp/systemd-private-06a7e1907d434f1b90fb1ae476240f87-fwupd.service-uZ2988:        directory
+/tmp/systemd-private-06a7e1907d434f1b90fb1ae476240f87-rtkit-daemon.service-4NFze9: directory
+/tmp/tracker-extract-files.1001:                                                   directory
+[baam0146@localhost labor1]$ 
+
 
 du
 - írassuk ki az aktuális katalógus és alkatalógusai méretét 
+[baam0146@localhost labor1]$ du .
+4	./temp2/d21/d211
+12	./temp2/d21
+16	./temp2
+4	./pldir1/pldir2/pldir3
+8	./pldir1/pldir2
+12	./pldir1
+4	./dir1
+4	./temp1_copy/d11/d111
+12	./temp1_copy/d11
+4	./temp1_copy/d12
+20	./temp1_copy
+4	./temp1/d11/d111
+8	./temp1/d11
+4	./temp1/d12
+16	./temp1
+4	./dir/dirrr/dirdirdir
+8	./dir/dirrr
+4	./dir/dirdir
+16	./dir
+332	.
+[baam0146@localhost labor1]$ 
+
 - írassuk ki a próba nevű állományt tartalmazó katalógus, és a benne levő 
   állományok méretét, valamint az összméretet. 
+[baam0146@localhost labor1]$ du -c .
+4	./temp2/d21/d211
+12	./temp2/d21
+16	./temp2
+4	./pldir1/pldir2/pldir3
+8	./pldir1/pldir2
+12	./pldir1
+4	./dir1
+4	./temp1_copy/d11/d111
+12	./temp1_copy/d11
+4	./temp1_copy/d12
+20	./temp1_copy
+4	./temp1/d11/d111
+8	./temp1/d11
+4	./temp1/d12
+16	./temp1
+4	./dir/dirrr/dirdirdir
+8	./dir/dirrr
+4	./dir/dirdir
+16	./dir
+332	.
+332	total
+[baam0146@localhost labor1]$ 
+
 - írassuk ki egy minimum két állományt tartalmazó  katalógusunkban szereplő 
   állományok méretét különböző egységekben (Kilobit, Kilobyte, Megabit, Megabyte)
+[baam0146@localhost labor1]$ du -ah ~/labor1/
+4.0K	/home/baam0146/labor1/p1
+4.0K	/home/baam0146/labor1/goodbyeworld.c
+4.0K	/home/baam0146/labor1/temp2/d21/f1_backup
+4.0K	/home/baam0146/labor1/temp2/d21/d211
+12K	/home/baam0146/labor1/temp2/d21
+0	/home/baam0146/labor1/temp2/allomany1.txt
+16K	/home/baam0146/labor1/temp2
+4.0K	/home/baam0146/labor1/f2
+4.0K	/home/baam0146/labor1/helloworld.c
+188K	/home/baam0146/labor1/puppy.jpg
+0	/home/baam0146/labor1/temp_file
+4.0K	/home/baam0146/labor1/pldir1/pldir2/pldir3
+8.0K	/home/baam0146/labor1/pldir1/pldir2
+12K	/home/baam0146/labor1/pldir1
+4.0K	/home/baam0146/labor1/proba
+4.0K	/home/baam0146/labor1/proba1
+0	/home/baam0146/labor1/four.c
+0	/home/baam0146/labor1/one.txt
+4.0K	/home/baam0146/labor1/pr1
+4.0K	/home/baam0146/labor1/pontok
+4.0K	/home/baam0146/labor1/p2
+4.0K	/home/baam0146/labor1/pr2
+0	/home/baam0146/labor1/two.pp
+4.0K	/home/baam0146/labor1/pr
+4.0K	/home/baam0146/labor1/szamok
+0	/home/baam0146/labor1/four.pp
+4.0K	/home/baam0146/labor1/dir1
+4.0K	/home/baam0146/labor1/temp1_copy/d11/d111
+4.0K	/home/baam0146/labor1/temp1_copy/d11/proba
+12K	/home/baam0146/labor1/temp1_copy/d11
+4.0K	/home/baam0146/labor1/temp1_copy/d12
+20K	/home/baam0146/labor1/temp1_copy
+0	/home/baam0146/labor1/two.c
+0	/home/baam0146/labor1/three.pp
+4.0K	/home/baam0146/labor1/temp1/d11/d111
+0	/home/baam0146/labor1/temp1/d11/f11
+8.0K	/home/baam0146/labor1/temp1/d11
+0	/home/baam0146/labor1/temp1/proba.sh
+4.0K	/home/baam0146/labor1/temp1/d12
+0	/home/baam0146/labor1/temp1/f1
+16K	/home/baam0146/labor1/temp1
+4.0K	/home/baam0146/labor1/eredmeny
+0	/home/baam0146/labor1/three.txt
+0	/home/baam0146/labor1/info
+0	/home/baam0146/labor1/dir/randomallomany
+4.0K	/home/baam0146/labor1/dir/dirrr/dirdirdir
+8.0K	/home/baam0146/labor1/dir/dirrr
+0	/home/baam0146/labor1/dir/dirdir/megegyrandomallomany
+4.0K	/home/baam0146/labor1/dir/dirdir
+16K	/home/baam0146/labor1/dir
+4.0K	/home/baam0146/labor1/nevsor
+0	/home/baam0146/labor1/one.pp
+332K	/home/baam0146/labor1/
+[baam0146@localhost labor1]$ 
+
 - írassuk ki a felhasználói katalógusban szereplő állományok méretét és ezek utolsó 
   módosítási dátumát 
+[baam0146@localhost labor1]$ du --time ~
+12	2018-03-08 08:32	/home/baam0146/Desktop
+4	2018-03-01 09:37	/home/baam0146/Public
+4	2018-03-01 09:38	/home/baam0146/.mozilla/systemextensionsdev
+4	2017-08-04 05:53	/home/baam0146/.mozilla/plugins
+4	2018-03-02 11:12	/home/baam0146/.mozilla/firefox/nkkkmeiq.default/gmp/Linux_x86_64-gcc3
+
 
 df
 - írassuk ki az állományrendszerek lemezhasználati adatait 
+[baam0146@localhost labor1]$ df
+Filesystem              1K-blocks    Used Available Use% Mounted on
+devtmpfs                  1526292       0   1526292   0% /dev
+tmpfs                     1539000   25800   1513200   2% /dev/shm
+tmpfs                     1539000    1628   1537372   1% /run
+tmpfs                     1539000       0   1539000   0% /sys/fs/cgroup
+/dev/mapper/fedora-root  17410832 7159264   9344100  44% /
+tmpfs                     1539000     152   1538848   1% /tmp
+/dev/sda1                  999320  145936    784572  16% /boot
+tmpfs                      307800      28    307772   1% /run/user/42
+tmpfs                      307800   11764    296036   4% /run/user/1001
+/dev/sr0                    56510   56510         0 100% /run/media/baam0146/VBox_GAs_5.2.6
+[baam0146@localhost labor1]$ 
+
 - írassuk ki az állományrendszerek lemezhasználati adatait "human readable"    	
   formátumban 
+[baam0146@localhost labor1]$ df -h
+Filesystem               Size  Used Avail Use% Mounted on
+devtmpfs                 1.5G     0  1.5G   0% /dev
+tmpfs                    1.5G   26M  1.5G   2% /dev/shm
+tmpfs                    1.5G  1.6M  1.5G   1% /run
+tmpfs                    1.5G     0  1.5G   0% /sys/fs/cgroup
+/dev/mapper/fedora-root   17G  6.9G  9.0G  44% /
+tmpfs                    1.5G  152K  1.5G   1% /tmp
+/dev/sda1                976M  143M  767M  16% /boot
+tmpfs                    301M   28K  301M   1% /run/user/42
+tmpfs                    301M   12M  290M   4% /run/user/1001
+/dev/sr0                  56M   56M     0 100% /run/media/baam0146/VBox_GAs_5.2.6
+[baam0146@localhost labor1]$ 
+
 - írassuk ki az állományrendszerek i-nod táblára vonatkozó adatait valamint ezek 
   típusát 
+[baam0146@localhost labor1]$ df -iT
+Filesystem              Type      Inodes  IUsed  IFree IUse% Mounted on
+devtmpfs                devtmpfs  381573    439 381134    1% /dev
+tmpfs                   tmpfs     384750     33 384717    1% /dev/shm
+tmpfs                   tmpfs     384750    769 383981    1% /run
+tmpfs                   tmpfs     384750     17 384733    1% /sys/fs/cgroup
+/dev/mapper/fedora-root ext4     1114112 201271 912841   19% /
+tmpfs                   tmpfs     384750     32 384718    1% /tmp
+/dev/sda1               ext4       65536    445  65091    1% /boot
+tmpfs                   tmpfs     384750     22 384728    1% /run/user/42
+tmpfs                   tmpfs     384750    125 384625    1% /run/user/1001
+/dev/sr0                iso9660        0      0      0     - /run/media/baam0146/VBox_GAs_5.2.6
+[baam0146@localhost labor1]$ 
+
 - írassuk ki az összes állományrendszer lemezhasználati adatait Kilobyte, valamint 
   Megabyteban 
+[baam0146@localhost labor1]$ df -BK
+Filesystem              1K-blocks     Used Available Use% Mounted on
+devtmpfs                 1526292K       0K  1526292K   0% /dev
+tmpfs                    1539000K   25800K  1513200K   2% /dev/shm
+tmpfs                    1539000K    1628K  1537372K   1% /run
+tmpfs                    1539000K       0K  1539000K   0% /sys/fs/cgroup
+/dev/mapper/fedora-root 17410832K 7159308K  9344056K  44% /
+tmpfs                    1539000K     160K  1538840K   1% /tmp
+/dev/sda1                 999320K  145936K   784572K  16% /boot
+tmpfs                     307800K      28K   307772K   1% /run/user/42
+tmpfs                     307800K   11764K   296036K   4% /run/user/1001
+/dev/sr0                   56510K   56510K        0K 100% /run/media/baam0146/VBox_GAs_5.2.6
+[baam0146@localhost labor1]$ df -BM
+Filesystem              1M-blocks  Used Available Use% Mounted on
+devtmpfs                    1491M    0M     1491M   0% /dev
+tmpfs                       1503M   26M     1478M   2% /dev/shm
+tmpfs                       1503M    2M     1502M   1% /run
+tmpfs                       1503M    0M     1503M   0% /sys/fs/cgroup
+/dev/mapper/fedora-root    17003M 6992M     9126M  44% /
+tmpfs                       1503M    1M     1503M   1% /tmp
+/dev/sda1                    976M  143M      767M  16% /boot
+tmpfs                        301M    1M      301M   1% /run/user/42
+tmpfs                        301M   12M      290M   4% /run/user/1001
+/dev/sr0                      56M   56M        0M 100% /run/media/baam0146/VBox_GAs_5.2.6
+[baam0146@localhost labor1]$ 
+
   
 ps
 - listázzuk az aktív terminálhoz tartozó folyamatokat és ezek állapotát. 
