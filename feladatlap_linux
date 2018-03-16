@@ -1232,7 +1232,6 @@ og
 er
 [baam0146@localhost labor1]$ 
 
-?????????????????????????????????????????????????????????????????????????????????
 - hozzunk létre egy "proba1" állományt, amely soraiban a mezőket a TAB karakter 
   válassza el, majd írassuk ki minden sorból az 5. mezőt
 [baam0146@localhost labor1]$ cat >proba1
@@ -1298,47 +1297,229 @@ Adam Balazs
 Adam
 [baam0146@localhost labor1]$ 
 
+uniq
 - egy megfelelően létrehozott "proba" állományból töröljük ki az egymásután 
   ismétlődő sorokat
+[baam0146@linux labor1]$ cat proba
+egy
+egy
+egy
+ketto
+harom
+harom
+harom
+negy
+ot
+[baam0146@linux labor1]$ uniq proba
+egy
+ketto
+harom
+negy
+ot
+[baam0146@linux labor1]$ 
+
 - egy megfelelően létrehozott "proba" állományból csak az egymásután többször 
   ismétlődő sorokat írassuk ki
+[baam0146@linux labor1]$ uniq -d proba
+egy
+harom
+[baam0146@linux labor1]$ 
+
 - egy megfelelően létrehozott "proba" állományból írassuk ki mindcen sor elé, hogy 
   egymás után hányszor szerepel
+[baam0146@linux labor1]$ uniq -c proba
+      3 egy
+      1 ketto
+      3 harom
+      1 negy
+      1 ot
+[baam0146@linux labor1]$ 
+
 
 wc
 - írassuk ki a "proba" nevű állomány sorainak, szavainak, illetve karaktereinek 
   számát
+[baam0146@linux labor1]$ wc -lwc proba
+ 9  9 44 proba
+[baam0146@linux labor1]$ 
+
 - írassuk ki az "/etc/passwd" állomány sorainak számát
+[baam0146@linux labor1]$ wc -l /etc/passwd
+3240 /etc/passwd
+[baam0146@linux labor1]$ 
+
 - írassuk ki a "proba" nevű állomány leghosszabb sorának számát
+[baam0146@linux labor1]$ wc -L proba
+5 proba
+[baam0146@linux labor1]$ 
+
 - írassuk ki a "proba" nevű állomány szavainak számát
+[baam0146@linux labor1]$ wc -w proba
+9 proba
+[baam0146@linux labor1]$ 
+
 - írassuk ki az alapkatalógusban levő "p1" nevű állomány karaktereinek számát
+[baam0146@linux labor1]$ wc -c ~/p1
+44 /home/scs/licenta/an2/gr621/baam0146/p1
+[baam0146@linux labor1]$ 
+
 
 ln
 - készítsünk szimbolikus linket, melynek neve "info" és az "/etc/passwd" állományra 
   mutat
+[baam0146@linux labor1]$ ln -sT /etc/passwd info
+[baam0146@linux labor1]$ 
+
 - hozzunk létre hard link-et a "p1" és "p2" állományra a tmp katalógusban
+[baam0146@linux labor1]$ ln -d p1 /tmp
+ln: creating hard link `/tmp/p1' => `p1': Invalid cross-device link
+[baam0146@linux labor1]$ ln -d p2 /tmp
+ln: creating hard link `/tmp/p2' => `p2': Invalid cross-device link
+[baam0146@linux labor1]$ 
+
 
 chmod
 - adjunk végrehajtásjogot a tulajdonosnak a "proba.sh" állományra
+[baam0146@linux labor1]$ chmod u=rwx proba.sh 
+[baam0146@linux labor1]$ 
+
 - vegyük el az olvasásjogot a csoport tagjaitól és a többi felhasználótól a 
   "proba.sh" állományra 
+[baam0146@linux labor1]$ chmod 700 proba.sh 
+[baam0146@linux labor1]$ 
+
 - a csoport tagjainak jogait változtassuk meg úgy, hogy olvasás- és írás-joguk legyen
   a "proba.sh" állományra
+[baam0146@linux labor1]$ chmod 760 proba.sh 
+[baam0146@linux labor1]$ 
+
 - állítsuk be a "proba.sh" állomány jogait  "rwxr-xr--"-re oktális számként adva meg 
   a jogokat
+[baam0146@linux labor1]$ chmod 754 proba.sh 
+[baam0146@linux labor1]$ 
+
 - adjunk írasjogot a próba állományra azon felhasználóknak, akik nem tartoznak az
   állomány csoportjába  
+[baam0146@linux labor1]$ chmod o=r proba.sh 
+[baam0146@linux labor1]$ 
+
 - adjunk végrehajtási jogot a próba állományt tartalmazó katalógusra és a benne levő
   állományokra rekurzívan, a csoportjában levő felhasználóknak
+[baam0146@linux labor1]$ chmod -R g=r ~/labor1/*
+chmod: changing permissions of
+`/home/scs/licenta/an2/gr621/baam0146/labor1/info': Operation not permitted
+
 
 find
 - listázzuk ki rekurzívan az aktuális katalógus összes állományát
+[baam0146@linux labor1]$ find .
+.
+./two.c
+./pr2
+./four.c
+./p1
+./proba1
+./pontok
+./info
+./three.c
+./one.c
+./nevsor
+./pr1
+./szamok
+./helloworld.c
+./four.pp
+./dir1
+./two.pp
+./temp1_copy
+./temp1_copy/d11
+./temp1_copy/d11/d111
+./temp1_copy/d11/proba
+./temp1_copy/d12
+./p2
+./goodbyeworld.c
+./proba.sh
+./f2
+./proba~
+./temp_file
+./temp2
+./temp2/d21
+./temp2/d21/f1_backup
+./temp2/d21/d211
+./three.pp
+./pldir1
+./pldir1/pldir2
+./pldir1/pldir2/pldir3
+./pr
+./temp1
+./temp1/d11
+./temp1/d11/d111
+./temp1/d11/f11
+./temp1/d12
+./temp1/f1
+./proba
+./eredmeny
+./one.pp
+[baam0146@linux labor1]$ 
+
 - keressük meg a "dir" katalógusban és alkatalógusaiban levő összes közönséges 
   állományt
+[baam0146@linux labor1]$ find *
+dir1
+eredmeny
+f2
+four.c
+four.pp
+goodbyeworld.c
+helloworld.c
+info
+nevsor
+one.c
+one.pp
+p1
+p2
+pldir1
+pldir1/pldir2
+pldir1/pldir2/pldir3
+pontok
+pr
+pr1
+pr2
+proba
+proba~
+proba1
+proba.sh
+szamok
+temp1
+temp1/d11
+temp1/d11/d111
+temp1/d11/f11
+temp1/d12
+temp1/f1
+temp1_copy
+temp1_copy/d11
+temp1_copy/d11/d111
+temp1_copy/d11/proba
+temp1_copy/d12
+temp2
+temp2/d21
+temp2/d21/f1_backup
+temp2/d21/d211
+temp_file
+three.c
+three.pp
+two.c
+two.pp
+[baam0146@linux labor1]$ 
+
 - keressük meg a "/tmp" katalógusban és alkatalógusaiban szereplő azon 
   állományokat, melyeknek csoport azonosítója ugyanaz, mint a mienk
+??????????????????????????????????????????????????????????????????????????
 - listázzuk ki rekurzívan az aktuális katalógus összes olyan állományát, melyre 
   mindenkinek van minden (írás/olvasás/végrehajtás) joga
+[baam0146@linux labor1]$ find -perm 777
+./info
+[baam0146@linux labor1]$ 
+
 - az alapkatalógusunkban és ennek alkatalógusaiban szereplő azon állományokat 
   listázzuk ki, melyeknek mérete 100kbyte-n'l nagyobb
 - listázzuk ki rekurzívan az aktuális katalógus összes txt-vel végződő állományát 
