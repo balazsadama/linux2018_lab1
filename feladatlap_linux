@@ -215,13 +215,54 @@ Megjegyzés: most folytassuk a feladatok megoldását a többi paranccsal, majd 
 
 - listázzuk ki a temp1 katalógus tartalmát rekurzívan, és a rejtett állományok 
   is jelenjenek meg
+[baam0146@localhost labor1]$ ls -aR temp1
+temp1:
+.  ..  d11  d12
+
+temp1/d11:
+.  ..  d111
+
+temp1/d11/d111:
+.  ..
+
+temp1/d12:
+.  ..
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki az aktuális katalógus tartalmát fordított abc sorrendben úgy, 
   hogy az állományok mérete felhasználóbarát módon jelenjen meg (vagyis blokkok 
   helyett byte, Kbyte vagy Mbyte-ban számolva)
+[baam0146@localhost labor1]$ ls -shrX
+total 16K
+4.0K temp2 4.0K temp1 4.0K pldir1 4.0K dir1
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki az /usr/ katalógus tartalmát hosszú formátumban, méret szerint 
   csökkenő sorrendben
+[baam0146@localhost labor1]$ ls -lS /usr/
+total 220
+dr-xr-xr-x. 151 root root 102400 Mar 16 16:32 lib64
+dr-xr-xr-x.   2 root root  53248 Mar 16 16:32 bin
+dr-xr-xr-x.   2 root root  20480 Mar 16 16:32 sbin
+drwxr-xr-x.  46 root root  12288 Mar 16 16:32 libexec
+drwxr-xr-x. 265 root root  12288 Mar  2 00:36 share
+drwxr-xr-x.   2 root root   4096 Aug  3  2017 games
+drwxr-xr-x.  36 root root   4096 Feb 27 16:32 include
+dr-xr-xr-x.  46 root root   4096 Mar 16 16:32 lib
+drwxr-xr-x.  12 root root   4096 Nov  5 09:29 local
+drwxr-xr-x.   4 root root   4096 Feb 27 16:44 src
+lrwxrwxrwx.   1 root root     10 Aug  3  2017 tmp -> ../var/tmp
+[baam0146@localhost labor1]$ 
+
 - listázzuk ki az alapkatalógus tartalmát rekurzívan, az utolsó módosítás 
   dátuma szerinti sorrendben
+[baam0146@localhost labor1]$ ls -tR
+.:
+dir1       temp1      proba1  one.txt         f2
+pr2        two.pp     proba   nevsor          eredmeny
+pr1        two.c      pr      info            temp1_copy
+fileforbg  three.pp   pontok  helloworld.c    pldir1
+
 
 cd
 - lépjünk be a gyökér katalógusban levő var/log katalógusba
